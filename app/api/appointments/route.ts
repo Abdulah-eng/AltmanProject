@@ -1,0 +1,93 @@
+import { NextRequest, NextResponse } from "next/server"
+import { createServerClient } from "@/lib/supabase/server"
+import nodemailer from "nodemailer"
+
+export async function POST(request: NextRequest) {
+  try {
+    const supabase = await createServerClient()
+    const body = await request.json()
+
+    const appointmentData = {
+      ...body,
+      user_id: null, // No user authentication required
+    }
+
+    const { data, error } = await supabase.from("appointments").insert(appointmentData)
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 400 })
+    }
+
+    // Send email to admin
+    try {
+      await sendAdminNotification(body)
+    } catch (emailError) {
+      console.error("Failed to send admin notification:", emailError)
+    }
+
+    return NextResponse.json({ success: true, data })
+  } catch (error) {
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+  }
+}
+
+async function sendAdminNotification(appointmentData: any) {
+  const transporter = nodemailer.createTransporter({
+    host: process.env.SMTP_HOST,
+    port: Number.parseInt(process.env.SMTP_PORT || "587"),
+    secure: false,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  })
+
+  const htmlContent = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #1e40af;">New Appointment Request</h2>
+      <p>A new appointment has been requested:</p>
+      <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <p><strong>Client Name:</strong> ${appointmentData.first_name} ${appointmentData.last_name}</p>
+        <p><strong>Email:</strong> ${appointmentData.email}</p>
+        <p><strong>Phone:</strong> ${appointmentData.phone}</p>
+        <p><strong>Service Type:</strong> ${appointmentData.service_type}</p>
+        <p><strong>Date:</strong> ${appointmentData.appointment_date}</p>
+        <p><strong>Time:</strong> ${appointmentData.appointment_time}</p>
+        ${appointmentData.message ? `<p><strong>Message:</strong> ${appointmentData.message}</p>` : ""}
+      </div>
+      <p>Please review and respond to this appointment request.</p>
+      <p>Best regards,<br>The Altman Brothers System</p>
+    </div>
+  `
+
+  await transporter.sendMail({
+    from: process.env.SMTP_FROM || "noreply@altmanbrothers.com",
+    to: "mabdulaharshad@gmail.com",
+    subject: "New Appointment Request - The Altman Brothers",
+    html: htmlContent,
+  })
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    const supabase = await createServerClient()
+    const { searchParams } = new URL(request.url)
+    const user_id = searchParams.get("user_id")
+
+    let query = supabase.from("appointments").select("*").order("created_at", { ascending: false })
+
+    if (user_id) {
+      query = query.eq("user_id", user_id)
+    }
+
+    const { data, error } = await query
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 400 })
+    }
+
+    return NextResponse.json({ data })
+  } catch (error) {
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+  }
+} 
