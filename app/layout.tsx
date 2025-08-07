@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { Inter, Montserrat } from "next/font/google"
 import { createServerClient } from "@/lib/supabase/server"
 import { AuthProvider } from "@/components/auth-provider"
+import { LoadingProvider } from "@/components/loading-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 const montserrat = Montserrat({
@@ -13,8 +14,8 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "The Altman Brothers - Real Estate Excellence",
-  description: "Premier real estate services with the Altman Brothers team",
+  title: "Homes of Hollywood - Real Estate Excellence",
+  description: "Premier real estate services with Homes of Hollywood",
     generator: 'v0.dev'
 }
 
@@ -31,7 +32,9 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${montserrat.className} bg-black text-white`} suppressHydrationWarning>
-        <AuthProvider session={session}>{children}</AuthProvider>
+        <LoadingProvider>
+          <AuthProvider session={session}>{children}</AuthProvider>
+        </LoadingProvider>
       </body>
     </html>
   )

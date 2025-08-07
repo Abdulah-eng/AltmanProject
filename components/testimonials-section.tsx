@@ -22,7 +22,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
       name: "Sarah Johnson",
       role: "Beverly Hills Homeowner",
       content:
-        "The Altman Brothers delivered an exceptional experience from start to finish. Their expertise in luxury markets is unmatched.",
+        "Homes of Hollywood delivered an exceptional experience from start to finish. Their expertise in luxury markets is unmatched.",
       rating: 5,
       image_url: "/placeholder.svg?height=80&width=80&text=SJ",
     },
@@ -56,8 +56,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-wide">CLIENT EXPERIENCES</h2>
           <div className="w-16 h-1 bg-[#D4AF37] mx-auto mb-8"></div>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Discover what our luxury real estate clients have to say about their exceptional experience with The Altman
-            Brothers.
+            Discover what our luxury real estate clients have to say about their exceptional experience with Homes of Hollywood.
           </p>
         </div>
 

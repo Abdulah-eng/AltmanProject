@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     let htmlContent = ""
 
     if (status === "approved") {
-      subject = "Appointment Confirmed - The Altman Brothers"
+      subject = "Appointment Confirmed - Homes of Hollywood"
       htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1e40af;">Appointment Confirmed</h2>
@@ -33,11 +33,11 @@ export async function POST(request: NextRequest) {
           </div>
           ${notes ? `<p><strong>Additional Notes:</strong> ${notes}</p>` : ""}
           <p>We look forward to meeting with you!</p>
-          <p>Best regards,<br>The Altman Brothers Team</p>
+          <p>Best regards,<br>Homes of Hollywood Team</p>
         </div>
       `
     } else if (status === "date_changed") {
-      subject = "Appointment Date/Time Updated - The Altman Brothers"
+      subject = "Appointment Date/Time Updated - Homes of Hollywood"
       htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1e40af;">Appointment Updated</h2>
@@ -50,11 +50,11 @@ export async function POST(request: NextRequest) {
           </div>
           ${notes ? `<p><strong>Additional Notes:</strong> ${notes}</p>` : ""}
           <p>We look forward to meeting with you at the new time!</p>
-          <p>Best regards,<br>The Altman Brothers Team</p>
+          <p>Best regards,<br>Homes of Hollywood Team</p>
         </div>
       `
     } else {
-      subject = "Appointment Update - The Altman Brothers"
+      subject = "Appointment Update - Homes of Hollywood"
       htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #dc2626;">Appointment Update</h2>
@@ -72,13 +72,13 @@ export async function POST(request: NextRequest) {
           }
           ${notes ? `<p><strong>Message:</strong> ${notes}</p>` : ""}
           <p>Please contact us to confirm the new appointment time or discuss alternatives.</p>
-          <p>Best regards,<br>The Altman Brothers Team</p>
+          <p>Best regards,<br>Homes of Hollywood Team</p>
         </div>
       `
     }
 
     await transporter.sendMail({
-      from: process.env.SMTP_FROM || "noreply@altmanbrothers.com",
+      from: process.env.SMTP_FROM || "noreply@homesofhollywood.com",
       to: appointment.email,
       subject,
       html: htmlContent,

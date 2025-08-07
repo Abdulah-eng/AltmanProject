@@ -22,6 +22,7 @@ import { DocumentManager } from "@/components/admin/document-manager"
 import { SocialImageManager } from "@/components/admin/social-image-manager"
 import { ClientExperiencesManager } from "@/components/admin/client-experiences-manager"
 import { Home, FileText, MessageSquare, Calendar, Video, BarChart3, Image, Users, Building, UserCheck, BookOpen, Star, Bot, FolderOpen, Instagram, Heart } from "lucide-react"
+import LuxuryLoadingScreen from "@/components/luxury-loading-screen"
 
 export default function AdminDashboard() {
   const [user, setUser] = useState<any>(null)
@@ -126,7 +127,7 @@ export default function AdminDashboard() {
   }
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>
+    return <LuxuryLoadingScreen isLoading={true} message="Loading admin dashboard..." />
   }
 
   if (!user) {
@@ -134,222 +135,271 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black text-white">
       <AdminHeader user={user} />
 
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-          <p className="text-gray-600">Manage your website content and appointments</p>
+        <div className="mb-8 animate-fade-in-up">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#D4AF37] tracking-wider mb-4">ADMIN DASHBOARD</h1>
+          <div className="w-16 h-1 bg-[#D4AF37] mb-4"></div>
+          <p className="text-gray-300 text-lg">Manage your luxury real estate website content and appointments</p>
         </div>
 
-        <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-14 bg-gray-100">
-            <TabsTrigger value="overview" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+        <Tabs defaultValue="overview" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-14 bg-gray-900 border border-gray-800 rounded-lg p-1">
+            <TabsTrigger 
+              value="overview" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <BarChart3 className="w-4 h-4" />
               Overview
             </TabsTrigger>
-            <TabsTrigger value="hero" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="hero" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Home className="w-4 h-4" />
               Hero
             </TabsTrigger>
-            <TabsTrigger value="properties" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="properties" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Building className="w-4 h-4" />
               Properties
             </TabsTrigger>
-            <TabsTrigger value="team" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="team" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <UserCheck className="w-4 h-4" />
               Team
             </TabsTrigger>
-            <TabsTrigger value="images" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="images" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Image className="w-4 h-4" />
               Images
             </TabsTrigger>
-            <TabsTrigger value="social-images" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="social-images" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Instagram className="w-4 h-4" />
               Social Images
             </TabsTrigger>
-            <TabsTrigger value="blogs" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="blogs" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <FileText className="w-4 h-4" />
               Blogs
             </TabsTrigger>
-            <TabsTrigger value="testimonials" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="testimonials" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <MessageSquare className="w-4 h-4" />
               Reviews
             </TabsTrigger>
-            <TabsTrigger value="client-experiences" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="client-experiences" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Heart className="w-4 h-4" />
               Client Experiences
             </TabsTrigger>
-            <TabsTrigger value="appointments" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="appointments" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Calendar className="w-4 h-4" />
               Appointments
             </TabsTrigger>
-            <TabsTrigger value="requirements" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="requirements" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Users className="w-4 h-4" />
               Requirements
             </TabsTrigger>
-            <TabsTrigger value="videos" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="videos" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Video className="w-4 h-4" />
               Videos
             </TabsTrigger>
-            <TabsTrigger value="courses" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="courses" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <BookOpen className="w-4 h-4" />
               Courses
             </TabsTrigger>
-            <TabsTrigger value="success-stories" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="success-stories" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Star className="w-4 h-4" />
               Success Stories
             </TabsTrigger>
-            <TabsTrigger value="chatbot-leads" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="chatbot-leads" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <Bot className="w-4 h-4" />
               Chatbot Leads
             </TabsTrigger>
-            <TabsTrigger value="documents" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=inactive]:text-gray-600 hover:text-gray-900">
+            <TabsTrigger 
+              value="documents" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
               <FolderOpen className="w-4 h-4" />
               Documents
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="overview">
-            <div className="grid md:grid-cols-2 lg:grid-cols-8 gap-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">Total Appointments</CardTitle>
+          <TabsContent value="overview" className="animate-fade-in-up">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
+                <CardHeader className="border-b border-gray-800">
+                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">TOTAL APPOINTMENTS</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{stats.appointments}</div>
-                  <p className="text-xs text-muted-foreground">Total appointments</p>
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-white mb-2">{stats.appointments}</div>
+                  <p className="text-xs text-gray-400 tracking-wide">Total appointments</p>
                 </CardContent>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">Properties</CardTitle>
+              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
+                <CardHeader className="border-b border-gray-800">
+                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">PROPERTIES</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{stats.properties}</div>
-                  <p className="text-xs text-muted-foreground">Total properties</p>
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-white mb-2">{stats.properties}</div>
+                  <p className="text-xs text-gray-400 tracking-wide">Total properties</p>
                 </CardContent>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">Team Members</CardTitle>
+              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
+                <CardHeader className="border-b border-gray-800">
+                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">TEAM MEMBERS</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{stats.teamMembers}</div>
-                  <p className="text-xs text-muted-foreground">Total team members</p>
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-white mb-2">{stats.teamMembers}</div>
+                  <p className="text-xs text-gray-400 tracking-wide">Total team members</p>
                 </CardContent>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">Published Blogs</CardTitle>
+              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
+                <CardHeader className="border-b border-gray-800">
+                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">PUBLISHED BLOGS</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{stats.blogs}</div>
-                  <p className="text-xs text-muted-foreground">Published blogs</p>
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-white mb-2">{stats.blogs}</div>
+                  <p className="text-xs text-gray-400 tracking-wide">Published blogs</p>
                 </CardContent>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">Testimonials</CardTitle>
+              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
+                <CardHeader className="border-b border-gray-800">
+                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">TESTIMONIALS</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{stats.testimonials}</div>
-                  <p className="text-xs text-muted-foreground">Published testimonials</p>
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-white mb-2">{stats.testimonials}</div>
+                  <p className="text-xs text-gray-400 tracking-wide">Published testimonials</p>
                 </CardContent>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">Videos</CardTitle>
+              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
+                <CardHeader className="border-b border-gray-800">
+                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">VIDEOS</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{stats.videos}</div>
-                  <p className="text-xs text-muted-foreground">Published videos</p>
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-white mb-2">{stats.videos}</div>
+                  <p className="text-xs text-gray-400 tracking-wide">Published videos</p>
                 </CardContent>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">Courses</CardTitle>
+              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
+                <CardHeader className="border-b border-gray-800">
+                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">COURSES</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{stats.courses}</div>
-                  <p className="text-xs text-muted-foreground">Total courses</p>
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-white mb-2">{stats.courses}</div>
+                  <p className="text-xs text-gray-400 tracking-wide">Total courses</p>
                 </CardContent>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">Success Stories</CardTitle>
+              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
+                <CardHeader className="border-b border-gray-800">
+                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">SUCCESS STORIES</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{stats.successStories}</div>
-                  <p className="text-xs text-muted-foreground">Total success stories</p>
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-white mb-2">{stats.successStories}</div>
+                  <p className="text-xs text-gray-400 tracking-wide">Total success stories</p>
                 </CardContent>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">Chatbot Leads</CardTitle>
+              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
+                <CardHeader className="border-b border-gray-800">
+                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">CHATBOT LEADS</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-blue-600">{stats.chatbotLeads}</div>
-                  <p className="text-xs text-muted-foreground">AI-generated leads</p>
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">{stats.chatbotLeads}</div>
+                  <p className="text-xs text-gray-400 tracking-wide">AI-generated leads</p>
                 </CardContent>
               </Card>
             </div>
           </TabsContent>
 
-          <TabsContent value="hero">
+          <TabsContent value="hero" className="animate-fade-in-up">
             <HeroContentManager />
           </TabsContent>
 
-          <TabsContent value="properties">
+          <TabsContent value="properties" className="animate-fade-in-up">
             <PropertyManager />
           </TabsContent>
 
-          <TabsContent value="team">
+          <TabsContent value="team" className="animate-fade-in-up">
             <TeamManager />
           </TabsContent>
 
-          <TabsContent value="images">
+          <TabsContent value="images" className="animate-fade-in-up">
             <ImageManager />
           </TabsContent>
 
-          <TabsContent value="social-images">
+          <TabsContent value="social-images" className="animate-fade-in-up">
             <SocialImageManager />
           </TabsContent>
 
-          <TabsContent value="blogs">
+          <TabsContent value="blogs" className="animate-fade-in-up">
             <BlogManager />
           </TabsContent>
 
-          <TabsContent value="testimonials">
+          <TabsContent value="testimonials" className="animate-fade-in-up">
             <TestimonialManager />
           </TabsContent>
 
-          <TabsContent value="client-experiences">
+          <TabsContent value="client-experiences" className="animate-fade-in-up">
             <ClientExperiencesManager />
           </TabsContent>
 
-          <TabsContent value="appointments">
+          <TabsContent value="appointments" className="animate-fade-in-up">
             <AppointmentManager />
           </TabsContent>
 
-          <TabsContent value="requirements">
+          <TabsContent value="requirements" className="animate-fade-in-up">
             <ClientRequirementsManager />
           </TabsContent>
 
-          <TabsContent value="videos">
+          <TabsContent value="videos" className="animate-fade-in-up">
             <VideoManager />
           </TabsContent>
-          <TabsContent value="courses">
+          <TabsContent value="courses" className="animate-fade-in-up">
             <CourseManager />
           </TabsContent>
-          <TabsContent value="success-stories">
+          <TabsContent value="success-stories" className="animate-fade-in-up">
             <SuccessStoriesManager />
           </TabsContent>
-          <TabsContent value="chatbot-leads">
+          <TabsContent value="chatbot-leads" className="animate-fade-in-up">
             <ChatbotLeadsManager />
           </TabsContent>
-          <TabsContent value="documents">
+          <TabsContent value="documents" className="animate-fade-in-up">
             <DocumentManager />
           </TabsContent>
         </Tabs>

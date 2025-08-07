@@ -37,7 +37,7 @@ export function BlogPageContent({ blogs }: BlogPageContentProps) {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Real Estate Insights</h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
-            Stay informed with the latest market trends, tips, and expert advice from The Altman Brothers team.
+            Stay informed with the latest market trends, tips, and expert advice from the Homes of Hollywood team.
           </p>
 
           {/* Search Bar */}

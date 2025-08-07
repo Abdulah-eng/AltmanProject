@@ -37,14 +37,14 @@ export function AboutSection() {
     if (aboutImage?.url && !imageError) {
       return aboutImage.url
     }
-    return "/placeholder.svg?height=600&width=500&text=The Altman Brothers"
+    return "/placeholder.svg?height=600&width=500&text=Homes of Hollywood"
   }
 
   const getImageAlt = () => {
     if (aboutImage?.alt_text) {
       return aboutImage.alt_text
     }
-    return "The Altman Brothers"
+    return "Homes of Hollywood"
   }
 
   const handleImageError = () => {
@@ -57,11 +57,11 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <div className="text-[#D4AF37] text-sm tracking-[0.3em] mb-4">ABOUT US</div>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-wide">THE ALTMAN BROTHERS</h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-wide">HOMES OF HOLLYWOOD</h2>
             <div className="w-16 h-1 bg-[#D4AF37] mb-8"></div>
 
             <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-              The Altman Brothers are among the top producing real estate agents in the country. Josh and Matt Altman
+              Homes of Hollywood is among the top producing real estate agencies in the country. Our team has
               managed to carve out a niche in the Los Angeles high end market.
             </p>
             <p className="text-gray-300 mb-6 leading-relaxed">
@@ -69,8 +69,8 @@ export function AboutSection() {
               and Holmby Hills, and everywhere from Malibu to the Hollywood Hills and Downtown LA.
             </p>
             <p className="text-gray-300 mb-8 leading-relaxed">
-              Together they have seasoned experience and ability to foster solid relationships. The Altman Brothers are
-              full-service real estate experts who strive to service the entire spectrum of exclusive clients Los
+              Together we have seasoned experience and ability to foster solid relationships. Homes of Hollywood is
+              a full-service real estate agency that strives to service the entire spectrum of exclusive clients Los
               Angeles has to offer.
             </p>
 

@@ -71,25 +71,25 @@ SMTP_FROM=mabdulaharshad@gmail.com
 
 ### **New Appointment Alert (Admin)**
 ```
-Subject: New Appointment Request - The Altman Brothers
+Subject: New Appointment Request - Homes of Hollywood
 Content: Client details, service type, date, time, message
 ```
 
 ### **Appointment Confirmed (Client)**
 ```
-Subject: Appointment Confirmed - The Altman Brothers
+Subject: Appointment Confirmed - Homes of Hollywood
 Content: Confirmation with date, time, service, notes
 ```
 
 ### **Appointment Updated (Client)**
 ```
-Subject: Appointment Date/Time Updated - The Altman Brothers
+Subject: Appointment Date/Time Updated - Homes of Hollywood
 Content: New date, time, service, notes
 ```
 
 ### **Appointment Rejected (Client)**
 ```
-Subject: Appointment Update - The Altman Brothers
+Subject: Appointment Update - Homes of Hollywood
 Content: Rejection with suggested alternatives
 ```
 

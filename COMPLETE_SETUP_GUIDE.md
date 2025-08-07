@@ -136,7 +136,7 @@ CREATE POLICY "Authenticated users can delete" ON storage.objects FOR DELETE USI
 - Fill in:
   - Image file
   - Title and description
-  - Social handle (e.g., @thejoshaltman)
+  - Social handle (e.g., @homesofhollywood)
   - Platform (Instagram, Facebook, Twitter, TikTok)
   - Published/Featured status
   - Display order

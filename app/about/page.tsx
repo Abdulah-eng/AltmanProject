@@ -55,7 +55,7 @@ export default function AboutPage() {
   }
 
   const getTeamImageUrl = () => {
-    return teamImage?.url || "/placeholder.svg?height=600&width=480&text=The Altman Brothers Team"
+    return teamImage?.url || "/placeholder.svg?height=600&width=480&text=Homes of Hollywood Team"
   }
 
   if (loading) {
@@ -92,15 +92,15 @@ export default function AboutPage() {
           <span>ABOUT</span>
         </div>
 
-        {/* AB Logo in Center */}
+        {/* HH Logo in Center */}
         <div className="relative z-10 text-center">
           <div className="text-8xl md:text-9xl font-bold text-[#D4AF37] tracking-wider mb-4">
-            <span>AB</span>
+            <span>HH</span>
           </div>
           <div className="text-2xl md:text-3xl text-white font-bold tracking-[0.3em]">
-            THE ALTMAN
+            HOMES OF
             <br />
-            <span className="text-lg tracking-[0.4em]">BROTHERS</span>
+            <span className="text-lg tracking-[0.4em]">HOLLYWOOD</span>
           </div>
         </div>
       </section>
@@ -113,26 +113,26 @@ export default function AboutPage() {
             <div>
               <div className="text-[#D4AF37] text-sm tracking-[0.3em] mb-4">ABOUT US</div>
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-wide">
-                <span className="border-l-4 border-[#D4AF37] pl-8">THE ALTMAN BROTHERS</span>
+                <span className="border-l-4 border-[#D4AF37] pl-8">HOMES OF HOLLYWOOD</span>
               </h2>
 
               <div className="text-gray-300 space-y-6 text-lg leading-relaxed">
                 <p>
-                  The Altman Brothers are recognized as some of the most dynamic, high-performing agents in the luxury
+                  Homes of Hollywood is recognized as one of the most dynamic, high-performing agencies in the luxury
                   home real estate market, consistently shattering records across the globe and ranking in the top 1% of
-                  real estate agents worldwide.
+                  real estate agencies worldwide.
                 </p>
                 <p>
                   This includes staking claim to top tinsel town turf in the Platinum Triangle of Beverly Hills,
                   Bel-Air, and Holmby Hills, and everywhere from Malibu to the Hollywood Hills and Downtown LA.
                 </p>
                 <p>
-                  Together they have seasoned experience and ability to foster solid relationships. The Altman Brothers
-                  are full-service real estate experts who strive to service the entire spectrum of exclusive clients
+                  Together we have seasoned experience and ability to foster solid relationships. Homes of Hollywood
+                  is a full-service real estate agency that strives to service the entire spectrum of exclusive clients
                   Los Angeles has to offer.
                 </p>
                 <p>
-                  With over $7.5 billion in sales, they continue to set new standards in luxury real estate, helping
+                  With over $7.5 billion in sales, we continue to set new standards in luxury real estate, helping
                   families find their dream homes and investors build successful portfolios.
                 </p>
               </div>

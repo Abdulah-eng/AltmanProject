@@ -58,14 +58,14 @@ export default function MediaPage() {
   const mediaFeatures = [
     {
       title: "Million Dollar Listing Los Angeles",
-      description: "Follow the Altman Brothers on Bravo's hit reality series showcasing luxury real estate.",
+      description: "Follow Homes of Hollywood on Bravo's hit reality series showcasing luxury real estate.",
       image: "/placeholder.svg?height=400&width=600&text=Million Dollar Listing LA",
       type: "TV SHOW",
       network: "BRAVO",
     },
     {
-      title: "Josh Altman YouTube Channel",
-      description: "Real estate tips, market insights, and behind-the-scenes content from Josh Altman.",
+      title: "Homes of Hollywood YouTube Channel",
+      description: "Real estate tips, market insights, and behind-the-scenes content from Homes of Hollywood.",
       image: getYoutubeImageUrl(),
       type: "YOUTUBE",
       subscribers: "165K",
@@ -290,7 +290,7 @@ export default function MediaPage() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">New Season of Million Dollar Listing LA</h3>
                 <p className="text-gray-300 mb-4">
-                  Catch the Altman Brothers in the latest season featuring exclusive luxury properties.
+                  Catch Homes of Hollywood in the latest season featuring exclusive luxury properties.
                 </p>
                 <Button
                   variant="outline"
@@ -327,7 +327,7 @@ export default function MediaPage() {
                   <span className="text-sm text-gray-400">NOVEMBER 2023</span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">YouTube Milestone</h3>
-                <p className="text-gray-300 mb-4">Josh Altman's YouTube channel reaches 165K subscribers milestone.</p>
+                <p className="text-gray-300 mb-4">Homes of Hollywood's YouTube channel reaches 165K subscribers milestone.</p>
                 <Button
                   variant="outline"
                   className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black bg-transparent"

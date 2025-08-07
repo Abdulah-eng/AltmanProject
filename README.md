@@ -1,4 +1,4 @@
-# Altman Brothers Real Estate Website
+# Homes of Hollywood Real Estate Website
 
 A modern, full-featured real estate website built with Next.js, TypeScript, Tailwind CSS, and Supabase.
 
@@ -49,7 +49,7 @@ A modern, full-featured real estate website built with Next.js, TypeScript, Tail
 
 ```bash
 git clone <repository-url>
-cd altman-brothers-website
+cd homes-of-hollywood-website
 ```
 
 ### 2. Install Dependencies

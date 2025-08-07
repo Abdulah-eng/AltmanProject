@@ -467,8 +467,8 @@ export default function ContactPage() {
                       <Mail className="w-6 h-6 text-[#D4AF37] mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="font-semibold text-white mb-2">Email</h3>
-                        <p className="text-gray-300 mb-1">info@altmanbrothers.com</p>
-                        <p className="text-gray-300">listings@altmanbrothers.com</p>
+                        <p className="text-gray-300 mb-1">info@homesofhollywood.com</p>
+                        <p className="text-gray-300">listings@homesofhollywood.com</p>
                         <p className="text-sm text-gray-500 mt-2">We respond within 2 hours during business hours</p>
                       </div>
                     </div>

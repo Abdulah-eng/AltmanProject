@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { createClientClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
-import { LogOut, User } from "lucide-react"
+import { LogOut, User, Settings } from "lucide-react"
 
 interface AdminHeaderProps {
   user: any
@@ -19,19 +19,61 @@ export function AdminHeader({ user }: AdminHeaderProps) {
   }
 
   return (
-    <header className="bg-white shadow-sm border-b">
+    <header className="bg-black border-b border-gray-800 shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-4">
-            <h1 className="text-xl font-semibold">Admin Panel</h1>
+        <div className="flex items-center justify-between h-20">
+          <div className="flex items-center space-x-6">
+            {/* Logo */}
+            <div className="flex items-center">
+              <div className="text-2xl font-bold text-[#D4AF37] tracking-wider">
+                <span className="text-3xl">HH</span>
+                <div className="text-sm leading-tight">
+                  HOMES OF
+                  <br />
+                  <span className="text-xs tracking-widest">HOLLYWOOD</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Divider */}
+            <div className="w-px h-8 bg-gray-700"></div>
+            
+            {/* Admin Title */}
+            <div>
+              <h1 className="text-xl font-bold text-white tracking-wide">ADMIN PANEL</h1>
+              <p className="text-xs text-gray-400 tracking-wider">Content Management System</p>
+            </div>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 text-sm text-gray-600">
-              <User className="w-4 h-4" />
-              <span>{user.email}</span>
+          <div className="flex items-center space-x-6">
+            {/* User Info */}
+            <div className="flex items-center space-x-3 bg-gray-900 px-4 py-2 rounded-lg border border-gray-800">
+              <div className="w-8 h-8 bg-[#D4AF37] rounded-full flex items-center justify-center">
+                <User className="w-4 h-4 text-black" />
+              </div>
+              <div className="text-sm">
+                <p className="text-white font-medium">{user.email}</p>
+                <p className="text-gray-400 text-xs">Administrator</p>
+              </div>
             </div>
-            <Button variant="outline" size="sm" onClick={handleLogout}>
+
+            {/* Settings Button */}
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="border-gray-700 text-gray-300 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300"
+            >
+              <Settings className="w-4 h-4 mr-2" />
+              Settings
+            </Button>
+
+            {/* Logout Button */}
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleLogout}
+              className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white transition-all duration-300"
+            >
               <LogOut className="w-4 h-4 mr-2" />
               Logout
             </Button>

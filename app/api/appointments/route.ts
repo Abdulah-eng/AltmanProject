@@ -56,14 +56,14 @@ async function sendAdminNotification(appointmentData: any) {
         ${appointmentData.message ? `<p><strong>Message:</strong> ${appointmentData.message}</p>` : ""}
       </div>
       <p>Please review and respond to this appointment request.</p>
-      <p>Best regards,<br>The Altman Brothers System</p>
+      <p>Best regards,<br>Homes of Hollywood System</p>
     </div>
   `
 
   await transporter.sendMail({
-    from: process.env.SMTP_FROM || "noreply@altmanbrothers.com",
+    from: process.env.SMTP_FROM || "noreply@homesofhollywood.com",
     to: "mabdulaharshad@gmail.com",
-    subject: "New Appointment Request - The Altman Brothers",
+    subject: "New Appointment Request - Homes of Hollywood",
     html: htmlContent,
   })
 }

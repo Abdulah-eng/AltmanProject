@@ -13,7 +13,7 @@ export function Footer() {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Company Info */}
             <div>
-              <div className="text-3xl font-bold text-[#D4AF37] tracking-wider mb-8">THE ALTMAN BROTHERS</div>
+              <div className="text-3xl font-bold text-[#D4AF37] tracking-wider mb-8">HOMES OF HOLLYWOOD</div>
 
               <div className="space-y-6">
                 <div className="flex items-center space-x-3">
@@ -23,7 +23,7 @@ export function Footer() {
 
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-[#D4AF37]" />
-                  <span>INFO@THEALTMANBROTHERS.COM</span>
+                  <span>INFO@HOMESOFHOLLYWOOD.COM</span>
                 </div>
               </div>
             </div>

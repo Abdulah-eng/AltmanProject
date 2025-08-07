@@ -1,4 +1,4 @@
--- Supabase Database Schema for Altman Brothers Real Estate Website
+-- Supabase Database Schema for Homes of Hollywood Real Estate Website
 
 -- Enable necessary extensions
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

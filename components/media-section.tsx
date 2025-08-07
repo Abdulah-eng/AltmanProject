@@ -88,7 +88,7 @@ export function MediaSection() {
           >
             <div className="text-gray-500 text-sm tracking-[0.3em] mb-4">WATCH THE LATEST</div>
             <h2 className="heading-primary text-4xl md:text-5xl text-black mb-8">
-              JOSH ALTMAN'S{" "}
+              HOMES OF HOLLYWOOD{" "}
               <span className="inline-flex items-center">
                 <span className="bg-red-600 text-white px-3 py-1 rounded text-3xl font-bold mr-2">YouTube</span>
               </span>{" "}

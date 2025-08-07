@@ -47,7 +47,7 @@ export function ClientExperiencesSection() {
             <h2 className="text-white text-4xl md:text-6xl font-bold tracking-wider mb-8">CLIENT EXPERIENCES</h2>
             <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8"></div>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Discover what our luxury real estate clients have to say about their exceptional experience with The Altman Brothers.
+              Discover what our luxury real estate clients have to say about their exceptional experience with Homes of Hollywood.
             </p>
           </div>
           
@@ -95,7 +95,7 @@ export function ClientExperiencesSection() {
           <h2 className="text-white text-4xl md:text-6xl font-bold tracking-wider mb-8">CLIENT EXPERIENCES</h2>
           <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8"></div>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Discover what our luxury real estate clients have to say about their exceptional experience with The Altman Brothers.
+            Discover what our luxury real estate clients have to say about their exceptional experience with Homes of Hollywood.
           </p>
         </div>
         

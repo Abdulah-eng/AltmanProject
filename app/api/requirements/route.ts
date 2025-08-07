@@ -63,14 +63,14 @@ async function sendAdminNotification(requirementData: any) {
         ${requirementData.timeline ? `<p><strong>Timeline:</strong> ${requirementData.timeline}</p>` : ""}
       </div>
       <p>Please review and respond to this requirement.</p>
-      <p>Best regards,<br>The Altman Brothers System</p>
+      <p>Best regards,<br>Homes of Hollywood System</p>
     </div>
   `
 
   await transporter.sendMail({
-    from: process.env.SMTP_FROM || "noreply@altmanbrothers.com",
+    from: process.env.SMTP_FROM || "noreply@homesofhollywood.com",
     to: "mabdulaharshad@gmail.com",
-    subject: "New Client Requirement - The Altman Brothers",
+    subject: "New Client Requirement - Homes of Hollywood",
     html: htmlContent,
   })
 }

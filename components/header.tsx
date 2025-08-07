@@ -51,11 +51,11 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <div className="text-2xl font-bold text-[#D4AF37] tracking-wider">
-                <span className="text-3xl">AB</span>
+                <span className="text-3xl">HH</span>
                 <div className="text-sm leading-tight">
-                  THE ALTMAN
+                  HOMES OF
                   <br />
-                  <span className="text-xs tracking-widest">BROTHERS</span>
+                  <span className="text-xs tracking-widest">HOLLYWOOD</span>
                 </div>
               </div>
             </Link>
@@ -194,22 +194,18 @@ export function Header() {
               <div className="text-[#D4AF37] font-bold text-lg tracking-wider">310.819.3250</div>
               <Mail className="w-5 h-5 text-[#D4AF37]" />
               
-
-              
-              <button className="flex flex-col space-y-1 p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <button className="flex flex-col items-center justify-center p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 <span className="w-6 h-0.5 bg-white"></span>
-                <span className="w-6 h-0.5 bg-white"></span>
-                <span className="w-6 h-0.5 bg-white"></span>
-                <span className="text-xs text-white ml-1 tracking-widest">MENU</span>
+                <span className="w-6 h-0.5 bg-white mt-1"></span>
+                <span className="w-6 h-0.5 bg-white mt-1"></span>
               </button>
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="lg:hidden flex flex-col space-y-1 p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button className="lg:hidden flex flex-col items-center justify-center p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span className="w-6 h-0.5 bg-white"></span>
-              <span className="w-6 h-0.5 bg-white"></span>
-              <span className="w-6 h-0.5 bg-white"></span>
-              <span className="text-xs text-white ml-1 tracking-widest">MENU</span>
+              <span className="w-6 h-0.5 bg-white mt-1"></span>
+              <span className="w-6 h-0.5 bg-white mt-1"></span>
             </button>
           </div>
         </div>
@@ -230,11 +226,11 @@ export function Header() {
             {/* Logo in Menu */}
             <div className="absolute top-8 left-8">
               <div className="text-2xl font-bold text-[#D4AF37] tracking-wider">
-                <span className="text-3xl">AB</span>
+                <span className="text-3xl">HH</span>
                 <div className="text-sm leading-tight">
-                  THE ALTMAN
+                  HOMES OF
                   <br />
-                  <span className="text-xs tracking-widest">BROTHERS</span>
+                  <span className="text-xs tracking-widest">HOLLYWOOD</span>
                 </div>
               </div>
             </div>

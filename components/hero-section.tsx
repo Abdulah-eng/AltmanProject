@@ -26,7 +26,7 @@ export function HeroSection({ data }: HeroSectionProps) {
 
   const defaultData = {
     title: "LUXURY REAL ESTATE REDEFINED",
-    subtitle: "THE ALTMAN BROTHERS",
+    subtitle: "HOMES OF HOLLYWOOD",
     description:
       "Experience unparalleled service in luxury real estate. From Beverly Hills to Malibu, we deliver exceptional results that exceed expectations.",
     image_url: "/placeholder.svg?height=800&width=1600&text=Luxury Real Estate Hero",

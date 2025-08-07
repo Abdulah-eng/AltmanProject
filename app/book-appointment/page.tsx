@@ -267,7 +267,7 @@ export default function BookAppointmentPage() {
                   {/* Why Choose Us */}
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-xl">Why Choose Altman Brothers?</CardTitle>
+                      <CardTitle className="text-xl">Why Choose Homes of Hollywood?</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="flex items-start space-x-3">
@@ -317,7 +317,7 @@ export default function BookAppointmentPage() {
                       <div className="flex items-center space-x-3">
                         <Mail className="w-5 h-5 text-blue-600" />
                         <div>
-                          <p className="font-medium text-gray-900">info@altmanbrothers.com</p>
+                          <p className="font-medium text-gray-900">info@homesofhollywood.com</p>
                           <p className="text-sm text-gray-600">Response within 2 hours</p>
                         </div>
                       </div>

@@ -40,13 +40,13 @@
 
 ### **New Requirements**
 ```
-Subject: New Client Requirement - The Altman Brothers
+Subject: New Client Requirement - Homes of Hollywood
 Content: Client details, requirement type, title, description, budget, timeline
 ```
 
 ### **New Appointments**
 ```
-Subject: New Appointment Request - The Altman Brothers
+Subject: New Appointment Request - Homes of Hollywood
 Content: Client details, service type, date, time, message
 ```
 

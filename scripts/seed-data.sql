@@ -1,16 +1,16 @@
 -- Insert sample hero content
 INSERT INTO hero_content (title, subtitle, description, image_url, cta_text, cta_link) VALUES
-('Your Dream Home Awaits', 'Premium Real Estate Services', 'Experience luxury real estate with the Altman Brothers. We deliver exceptional service and results that exceed expectations.', '/placeholder.svg?height=600&width=1200', 'View Our Listings', '/listings');
+('Your Dream Home Awaits', 'Premium Real Estate Services', 'Experience luxury real estate with Homes of Hollywood. We deliver exceptional service and results that exceed expectations.', '/placeholder.svg?height=600&width=1200', 'View Our Listings', '/listings');
 
 -- Insert sample blogs
 INSERT INTO blogs (title, slug, excerpt, content, image_url, author, published) VALUES
-('Top 10 Tips for First-Time Home Buyers', 'first-time-home-buyers-tips', 'Essential advice for navigating your first home purchase successfully.', 'Buying your first home is an exciting milestone, but it can also be overwhelming. Here are our top 10 tips to help you navigate the process successfully...', '/placeholder.svg?height=400&width=600', 'Josh Altman', true),
-('Market Trends: What to Expect in 2024', 'market-trends-2024', 'Our analysis of the current real estate market and predictions for the year ahead.', 'The real estate market continues to evolve, and 2024 brings new opportunities and challenges. Here''s our comprehensive analysis...', '/placeholder.svg?height=400&width=600', 'Matt Altman', true),
-('Staging Your Home for Maximum Appeal', 'home-staging-tips', 'Professional staging tips to help your home sell faster and for more money.', 'Home staging is one of the most effective ways to sell your home quickly and for top dollar. Here are our professional tips...', '/placeholder.svg?height=400&width=600', 'Josh Altman', true);
+('Top 10 Tips for First-Time Home Buyers', 'first-time-home-buyers-tips', 'Essential advice for navigating your first home purchase successfully.', 'Buying your first home is an exciting milestone, but it can also be overwhelming. Here are our top 10 tips to help you navigate the process successfully...', '/placeholder.svg?height=400&width=600', 'Homes of Hollywood Team', true),
+('Market Trends: What to Expect in 2024', 'market-trends-2024', 'Our analysis of the current real estate market and predictions for the year ahead.', 'The real estate market continues to evolve, and 2024 brings new opportunities and challenges. Here''s our comprehensive analysis...', '/placeholder.svg?height=400&width=600', 'Homes of Hollywood Team', true),
+('Staging Your Home for Maximum Appeal', 'home-staging-tips', 'Professional staging tips to help your home sell faster and for more money.', 'Home staging is one of the most effective ways to sell your home quickly and for top dollar. Here are our professional tips...', '/placeholder.svg?height=400&width=600', 'Homes of Hollywood Team', true);
 
 -- Insert sample testimonials
 INSERT INTO testimonials (name, role, content, rating, image_url, published) VALUES
-('Sarah Johnson', 'Home Buyer', 'The Altman Brothers made our home buying experience seamless and stress-free. Their expertise and dedication are unmatched.', 5, '/placeholder.svg?height=80&width=80', true),
+('Sarah Johnson', 'Home Buyer', 'Homes of Hollywood made our home buying experience seamless and stress-free. Their expertise and dedication are unmatched.', 5, '/placeholder.svg?height=80&width=80', true),
 ('Michael Chen', 'Property Investor', 'Outstanding service and market knowledge. They helped me build a profitable real estate portfolio.', 5, '/placeholder.svg?height=80&width=80', true),
 ('Emily Rodriguez', 'Home Seller', 'Sold our home above asking price in just two weeks. Their marketing strategy is exceptional.', 5, '/placeholder.svg?height=80&width=80', true);
 

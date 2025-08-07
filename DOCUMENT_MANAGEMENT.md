@@ -103,7 +103,7 @@ SMTP_HOST=your-smtp-host
 SMTP_PORT=587
 SMTP_USER=your-email@example.com
 SMTP_PASS=your-email-password
-SMTP_FROM=noreply@altmanbrothers.com
+SMTP_FROM=noreply@homesofhollywood.com
 ```
 
 ## Usage
