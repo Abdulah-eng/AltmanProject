@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 interface LuxuryLoadingScreenProps {
   isLoading?: boolean
@@ -71,14 +72,15 @@ export default function LuxuryLoadingScreen({
       <div className="relative z-10 text-center">
         {/* Logo */}
         <div className="mb-8 animate-pulse-gold">
-          <div className="text-6xl md:text-8xl font-bold text-[#D4AF37] tracking-wider mb-4 animate-float">
-            <span className="animate-bounce animate-glow" style={{ animationDelay: '0s' }}>H</span>
-            <span className="animate-bounce animate-glow" style={{ animationDelay: '0.1s' }}>H</span>
-          </div>
-          <div className="text-lg md:text-xl text-white font-light tracking-[0.3em]">
-            <span className="animate-fade-in-up animate-stagger-1">HOMES OF</span>
-            <br />
-            <span className="animate-fade-in-up animate-stagger-2 text-[#D4AF37] tracking-[0.4em] animate-shimmer">HOLLYWOOD</span>
+          <div className="flex justify-center mb-6">
+            <div className="w-24 h-24 md:w-32 md:h-32 relative animate-float">
+              <Image
+                src="/logo.png.png"
+                alt="Homes of Hollywood Logo"
+                fill
+                className="object-contain animate-glow"
+              />
+            </div>
           </div>
         </div>
 

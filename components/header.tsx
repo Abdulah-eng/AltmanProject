@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { X, Mail, ChevronDown } from "lucide-react"
 
 export function Header() {
@@ -50,13 +51,13 @@ export function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="text-2xl font-bold text-[#D4AF37] tracking-wider">
-                <span className="text-3xl">HH</span>
-                <div className="text-sm leading-tight">
-                  HOMES OF
-                  <br />
-                  <span className="text-xs tracking-widest">HOLLYWOOD</span>
-                </div>
+              <div className="w-16 h-16 relative">
+                <Image
+                  src="/logo.png.png"
+                  alt="Homes of Hollywood Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </Link>
 
@@ -225,13 +226,13 @@ export function Header() {
 
             {/* Logo in Menu */}
             <div className="absolute top-8 left-8">
-              <div className="text-2xl font-bold text-[#D4AF37] tracking-wider">
-                <span className="text-3xl">HH</span>
-                <div className="text-sm leading-tight">
-                  HOMES OF
-                  <br />
-                  <span className="text-xs tracking-widest">HOLLYWOOD</span>
-                </div>
+              <div className="w-14 h-14 relative">
+                <Image
+                  src="/logo.png.png"
+                  alt="Homes of Hollywood Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
 

@@ -251,13 +251,14 @@ export function ContactSection() {
 
         {/* Bottom CTA - Compact */}
         <div className="mt-12 text-center animate-fade-in-up">
-          <div className="inline-flex items-center space-x-3 bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-6 py-3 rounded-full">
-            <div className="text-xl font-bold text-[#D4AF37] tracking-wider">
-              <span className="text-2xl">HH</span>
-            </div>
-            <div className="text-sm leading-tight text-[#D4AF37]">
-              <div className="font-bold">HOMES OF HOLLYWOOD</div>
-              <div className="text-xs tracking-widest opacity-80">LUXURY REAL ESTATE</div>
+          <div className="inline-flex items-center justify-center bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-6 py-3 rounded-full">
+            <div className="w-8 h-8 relative">
+              <Image
+                src="/logo.png.png"
+                alt="Homes of Hollywood Logo"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
           <p className="text-gray-400 mt-4 text-base">Where luxury meets exceptional service</p>
