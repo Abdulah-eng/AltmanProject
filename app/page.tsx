@@ -1,6 +1,17 @@
 import { HeroSection } from "@/components/hero-section"
 import { PropertyCarousel } from "@/components/property-carousel"
 import { AboutSection } from "@/components/about-section"
+import { FeaturedProperties } from "@/components/featured-properties"
+import { WildfireSupport } from "@/components/wildfire-support"
+import { PropertyManagementServices } from "@/components/property-management-services"
+import { MortgageCalculatorSection } from "@/components/mortgage-calculator-section"
+import { PropertyComparisonSection } from "@/components/property-comparison-section"
+import { PremierNeighborhoodsSection } from "@/components/premier-neighborhoods-section"
+import { NeighborhoodCTASection } from "@/components/neighborhood-cta-section"
+import { NewDevelopmentsSection } from "@/components/new-developments-section"
+import { AboutDonAdamsSection } from "@/components/about-don-adams-section"
+import { WhyChooseDonAdamsSection } from "@/components/why-choose-don-adams-section"
+import { SpecialOffersSection } from "@/components/special-offers-section"
 import { StatsSection } from "@/components/stats-section"
 import { ServicesSection } from "@/components/services-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
@@ -52,6 +63,17 @@ export default async function HomePage() {
         <HeroSection data={heroData} />
         <PropertyCarousel />
         <AboutSection />
+        <FeaturedProperties />
+        <WildfireSupport />
+        <PropertyManagementServices />
+        <MortgageCalculatorSection />
+        <PropertyComparisonSection />
+        <PremierNeighborhoodsSection />
+        <NeighborhoodCTASection />
+        <NewDevelopmentsSection />
+        <AboutDonAdamsSection />
+        <WhyChooseDonAdamsSection />
+        <SpecialOffersSection />
         <StatsSection />
         <ServicesSection />
         <TestimonialsSection testimonials={testimonials} />

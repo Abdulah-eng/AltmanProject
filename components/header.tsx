@@ -62,14 +62,7 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
-              <Link
-                href="/"
-                className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
-              >
-                HOME
-              </Link>
-
+            <nav className="hidden lg:flex items-center space-x-6">
               {/* About Dropdown */}
               <div
                 className="relative group"
@@ -188,13 +181,45 @@ export function Header() {
               >
                 CONTACT
               </Link>
+
+              <Link
+                href="/mortgage-calculator"
+                className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
+              >
+                MORTGAGE CALCULATOR
+              </Link>
+
+              <Link
+                href="/property-comparison"
+                className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
+              >
+                PROPERTY COMPARISON
+              </Link>
+
+              <Link
+                href="/mls-listings"
+                className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
+              >
+                MLS LISTINGS
+              </Link>
+
+              <Link
+                href="/new-developments"
+                className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
+              >
+                NEW DEVELOPMENTS
+              </Link>
+
+              <Link
+                href="/real-estate-insights"
+                className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
+              >
+                REAL ESTATE INSIGHTS
+              </Link>
             </nav>
 
             {/* Contact Info & Menu */}
             <div className="hidden lg:flex items-center space-x-6">
-              <div className="text-[#D4AF37] font-bold text-lg tracking-wider">310.819.3250</div>
-              <Mail className="w-5 h-5 text-[#D4AF37]" />
-              
               <button className="flex flex-col items-center justify-center p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 <span className="w-6 h-0.5 bg-white"></span>
                 <span className="w-6 h-0.5 bg-white mt-1"></span>
@@ -320,6 +345,41 @@ export function Header() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     BOOK APPOINTMENT
+                  </Link>
+                  <Link
+                    href="/mortgage-calculator"
+                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    MORTGAGE CALCULATOR
+                  </Link>
+                  <Link
+                    href="/property-comparison"
+                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    PROPERTY COMPARISON
+                  </Link>
+                  <Link
+                    href="/mls-listings"
+                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    MLS LISTINGS
+                  </Link>
+                  <Link
+                    href="/new-developments"
+                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    NEW DEVELOPMENTS
+                  </Link>
+                  <Link
+                    href="/real-estate-insights"
+                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    REAL ESTATE INSIGHTS
                   </Link>
                 </div>
 
