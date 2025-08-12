@@ -183,13 +183,6 @@ export function Header() {
               </Link>
 
               <Link
-                href="/mortgage-calculator"
-                className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
-              >
-                MORTGAGE CALCULATOR
-              </Link>
-
-              <Link
                 href="/property-comparison"
                 className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
               >
@@ -345,13 +338,6 @@ export function Header() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     BOOK APPOINTMENT
-                  </Link>
-                  <Link
-                    href="/mortgage-calculator"
-                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    MORTGAGE CALCULATOR
                   </Link>
                   <Link
                     href="/property-comparison"
