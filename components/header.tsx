@@ -148,13 +148,6 @@ export function Header() {
               </Link>
 
               <Link
-                href="/property-comparison"
-                className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
-              >
-                PROPERTY COMPARISON
-              </Link>
-
-              <Link
                 href="/mls-listings"
                 className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
               >
@@ -289,13 +282,6 @@ export function Header() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     BOOK APPOINTMENT
-                  </Link>
-                  <Link
-                    href="/property-comparison"
-                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    PROPERTY COMPARISON
                   </Link>
                   <Link
                     href="/mls-listings"

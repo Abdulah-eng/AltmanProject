@@ -2,7 +2,6 @@ import { HeroSection } from "@/components/hero-section"
 import { FeaturedProperties } from "@/components/featured-properties"
 import { WildfireSupport } from "@/components/wildfire-support"
 import { PropertyManagementServices } from "@/components/property-management-services"
-import { PropertyComparisonSection } from "@/components/property-comparison-section"
 import { PremierNeighborhoodsSection } from "@/components/premier-neighborhoods-section"
 import { NewDevelopmentsSection } from "@/components/new-developments-section"
 import { AboutDonAdamsSection } from "@/components/about-don-adams-section"
@@ -55,7 +54,6 @@ export default async function HomePage() {
         <NewDevelopmentsSection />
         <WildfireSupport />
         <AboutDonAdamsSection />
-        <PropertyComparisonSection />
         <WhyChooseDonAdamsSection />
         <SpecialOffersSection />
         <PropertyManagementServices />

@@ -28,6 +28,24 @@ const neighborhoods: Neighborhood[] = [
     description: "Private estates and gated mansions in a serene setting",
     propertyCount: 15,
     image: "/images/bel-air.jpg"
+  },
+  {
+    name: "Malibu",
+    description: "Oceanfront luxury with pristine beaches and coastal elegance",
+    propertyCount: 22,
+    image: "/images/malibu.jpg"
+  },
+  {
+    name: "Brentwood",
+    description: "Sophisticated suburban charm with top-rated schools",
+    propertyCount: 19,
+    image: "/images/brentwood.jpg"
+  },
+  {
+    name: "Pacific Palisades",
+    description: "Exclusive coastal community with panoramic ocean views",
+    propertyCount: 16,
+    image: "/images/pacific-palisades.jpg"
   }
 ]
 
@@ -48,7 +66,7 @@ export function PremierNeighborhoodsSection() {
           </div>
 
           {/* Neighborhood Cards Grid */}
-          <div className="grid md:grid-cols-3 gap-8 animate-fade-in-up animate-stagger-1">
+          <div className="grid md:grid-cols-3 gap-8 animate-fade-in-up animate-stagger-1 mb-12">
             {neighborhoods.map((neighborhood, index) => (
               <Card key={neighborhood.name} className="bg-gray-800 border-gray-700 shadow-2xl hover:shadow-[#D4AF37]/20 transition-all duration-300 group">
                 <CardContent className="p-0 overflow-hidden">
@@ -78,6 +96,13 @@ export function PremierNeighborhoodsSection() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Call to Action Button */}
+          <div className="text-center animate-fade-in-up animate-stagger-2">
+            <button className="bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold px-8 py-4 text-lg tracking-wide transition-all duration-300 hover:scale-105">
+              VIEW ALL NEIGHBORHOODS
+            </button>
           </div>
         </div>
       </div>
