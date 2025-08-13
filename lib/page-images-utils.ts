@@ -151,20 +151,10 @@ export async function getBlogPageImages() {
   ])
 }
 
-// Media page specific functions
-export async function getMediaPageImages() {
-  return getPageImagesByKeys('media', [
-    'hero_image',
-    'youtube_image',
-    'press_image'
-  ])
-}
-
 // Training page specific functions
 export async function getTrainingPageImages() {
   return getPageImagesByKeys('training', [
-    'hero_image',
-    'speaking_image'
+    'hero_image'
   ])
 }
 

@@ -1,10 +1,10 @@
 # Video Management System
 
-This document explains how to use the video management system for displaying YouTube videos on the media page and home page.
+This document explains how to use the video management system for displaying YouTube videos on the home page.
 
 ## Overview
 
-The video management system allows you to add, edit, and manage YouTube videos through the admin dashboard. Videos are displayed on both the media page (`/media`) and home page in beautiful card layouts with thumbnails and play buttons.
+The video management system allows you to upload, manage, and display YouTube videos through the admin dashboard. Videos are displayed on the home page in beautiful card layouts with thumbnails and play buttons.
 
 ## Database Schema
 
@@ -56,15 +56,10 @@ The system supports various YouTube URL formats:
 
 ## Display Locations
 
-### Media Page (`/media`)
-- Shows all published videos in a dedicated "LATEST VIDEOS" section
-- Videos appear above the media platforms section
-- Each video shows thumbnail, title, description, and play button
-
 ### Home Page (`/`)
 - Shows only featured videos in a "WATCH THE LATEST" section
-- Appears between team section and media section
-- Includes a "VIEW ALL VIDEOS" button linking to media page
+- Appears between team section and other content sections
+- Videos are displayed in a grid layout with thumbnails and play buttons
 
 ## Database Setup
 
@@ -133,14 +128,17 @@ components/admin/
   video-manager.tsx       # Admin dashboard video manager
 components/
   video-section.tsx       # Video section component for home page
-lib/
-  video-utils.ts          # Utility functions for video management
-scripts/
-  update-videos-table.sql # Database update script
-  test-videos.sql         # Test script for verification
-app/
-  media/page.tsx          # Media page with video display
 ```
+
+## Admin Dashboard Features
+
+### Video Management
+- **Add Videos**: Upload new YouTube videos with titles, descriptions, and custom thumbnails
+- **Edit Videos**: Update video details, URLs, and settings
+- **Publish/Unpublish**: Control which videos are visible on the site
+- **Featured Videos**: Mark videos as featured to appear on home page
+- **Order Management**: Control the display order of videos
+- **Real-time Updates**: Changes appear immediately on the home page
 
 ## Example Video Data
 
@@ -199,4 +197,4 @@ Here's an example of the video data structure:
 2. Verify table structure with test script
 3. Check browser console for errors
 
-This system provides a complete solution for managing YouTube videos that will automatically appear on both the media page and home page with a professional, modern design. 
+This system provides a complete solution for managing YouTube videos that will automatically appear on the home page with a professional, modern design. 

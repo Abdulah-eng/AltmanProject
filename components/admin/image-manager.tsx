@@ -62,14 +62,8 @@ const IMAGE_KEYS = {
     hero_image: "Blog Page Hero Image",
     default_image: "Blog Default Image",
   },
-  media: {
-    hero_image: "Media Page Hero Image",
-    youtube_image: "Media YouTube Image",
-    press_image: "Media Press Image",
-  },
   training: {
     hero_image: "Training Page Hero Image",
-    speaking_image: "Training Speaking Image",
   }
 }
 
@@ -232,7 +226,6 @@ export function ImageManager() {
       case "properties": return <Building className="w-4 h-4" />
       case "services": return <Settings className="w-4 h-4" />
       case "blog": return <FileText className="w-4 h-4" />
-      case "media": return <Video className="w-4 h-4" />
       case "training": return <User className="w-4 h-4" />
       default: return <Eye className="w-4 h-4" />
     }

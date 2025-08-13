@@ -33,15 +33,8 @@ export function Header() {
     { label: "SELLERS", href: "/services/sellers" },
   ]
 
-  const mediaDropdownItems = [
-    { label: "MILLION DOLLAR LISTING LA", href: "/media/million-dollar-listing" },
-    { label: "YOUTUBE", href: "/media/youtube" },
-    { label: "PRESS", href: "/media/press" },
-  ]
-
   const trainingDropdownItems = [
     { label: "TRAINING", href: "/training" },
-    { label: "SPEAKING", href: "/speaking" },
   ]
 
   return (
@@ -119,35 +112,7 @@ export function Header() {
                 )}
               </div>
 
-              {/* In The Media Dropdown */}
-              <div
-                className="relative group"
-                onMouseEnter={() => setActiveDropdown("media")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link
-                  href="/media"
-                  className="flex items-center text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
-                >
-                  IN THE MEDIA
-                  <ChevronDown className="w-4 h-4 ml-1" />
-                </Link>
-                {activeDropdown === "media" && (
-                  <div className="absolute top-full left-0 w-64 bg-black border-l-4 border-[#D4AF37] shadow-lg z-50">
-                    {mediaDropdownItems.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="block px-6 py-3 text-white hover:text-[#D4AF37] hover:bg-gray-900 transition-colors text-sm tracking-wide border-b border-gray-800 last:border-b-0"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Training & Speaking Dropdown */}
+              {/* Training Dropdown */}
               <div
                 className="relative group"
                 onMouseEnter={() => setActiveDropdown("training")}
@@ -157,7 +122,7 @@ export function Header() {
                   href="/training"
                   className="flex items-center text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
                 >
-                  TRAINING & SPEAKING
+                  TRAINING
                   <ChevronDown className="w-4 h-4 ml-1" />
                 </Link>
                 {activeDropdown === "training" && (
@@ -290,23 +255,9 @@ export function Header() {
                 </div>
               </div>
 
-              {/* Media Section */}
+              {/* Training Section */}
               <div className="flex-1 px-8">
-                <h3 className="text-[#D4AF37] text-xl font-bold mb-8 tracking-wider">IN THE MEDIA</h3>
-                <div className="space-y-4">
-                  {mediaDropdownItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-
-                <h3 className="text-[#D4AF37] text-xl font-bold mb-8 mt-12 tracking-wider">TRAINING & SPEAKING</h3>
+                <h3 className="text-[#D4AF37] text-xl font-bold mb-8 tracking-wider">TRAINING</h3>
                 <div className="space-y-4">
                   {trainingDropdownItems.map((item) => (
                     <Link

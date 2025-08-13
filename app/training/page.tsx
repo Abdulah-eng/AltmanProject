@@ -16,7 +16,6 @@ export default function TrainingPage() {
   const [courses, setCourses] = useState<Course[]>([])
   const [successStories, setSuccessStories] = useState<SuccessStory[]>([])
   const [heroImage, setHeroImage] = useState<ImageData | null>(null)
-  const [speakingImage, setSpeakingImage] = useState<ImageData | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -34,9 +33,6 @@ export default function TrainingPage() {
       // Fetch training page images
       const hero = await getImageByKey('hero_image')
       if (hero) setHeroImage(hero)
-
-      const speaking = await getImageByKey('speaking_image')
-      if (speaking) setSpeakingImage(speaking)
     } catch (error) {
       console.error('Error fetching courses:', error)
     }
@@ -57,10 +53,6 @@ export default function TrainingPage() {
 
   const getHeroImageUrl = () => {
     return heroImage?.url || "/placeholder.svg?height=800&width=1600&text=Training Conference Room"
-  }
-
-  const getSpeakingImageUrl = () => {
-    return speakingImage?.url || "/placeholder.svg?height=400&width=600&text=Speaking Event"
   }
 
   if (loading) {

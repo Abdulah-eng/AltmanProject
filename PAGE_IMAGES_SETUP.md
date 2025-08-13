@@ -99,14 +99,8 @@ CREATE POLICY "Authenticated users can delete" ON storage.objects FOR DELETE USI
 - `hero_image` - Blog page hero image
 - `default_image` - Default blog image
 
-### Media Page Images
-- `hero_image` - Media page hero image
-- `youtube_image` - YouTube image
-- `press_image` - Press image
-
 ### Training Page Images
 - `hero_image` - Training page hero image
-- `speaking_image` - Speaking image
 
 ## Admin Panel Usage
 

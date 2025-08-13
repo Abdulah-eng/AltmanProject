@@ -55,11 +55,11 @@ export function BlogSection({ blogs }: BlogSectionProps) {
     <section className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <div className="text-[#D4AF37] text-sm tracking-[0.3em] mb-4">IN THE MEDIA</div>
+          <div className="text-[#D4AF37] text-sm tracking-[0.3em] mb-4">LATEST INSIGHTS</div>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-wide">LATEST INSIGHTS</h2>
           <div className="w-16 h-1 bg-[#D4AF37] mx-auto mb-8"></div>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Stay informed with our latest luxury market insights, media appearances, and real estate expertise.
+            Stay informed with our latest luxury market insights and real estate expertise.
           </p>
         </div>
 

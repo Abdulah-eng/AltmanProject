@@ -119,18 +119,7 @@ export function VideoSection() {
           })}
         </div>
 
-        {videos.length > 0 && (
-          <div className="text-center mt-12">
-            <Button
-              variant="outline"
-              className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black bg-transparent"
-              onClick={() => window.open('/media', '_self')}
-            >
-              VIEW ALL VIDEOS
-              <ExternalLink className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
-        )}
+        {/* Removed VIEW ALL VIDEOS button - media pages removed */}
       </div>
     </section>
   )

@@ -48,14 +48,8 @@ export const IMAGE_KEYS = {
     hero_image: "Blog Page Hero Image",
     default_image: "Blog Default Image",
   },
-  media: {
-    hero_image: "Media Page Hero Image",
-    youtube_image: "Media YouTube Image",
-    press_image: "Media Press Image",
-  },
   training: {
     hero_image: "Training Page Hero Image",
-    speaking_image: "Training Speaking Image",
   }
 } as const
 

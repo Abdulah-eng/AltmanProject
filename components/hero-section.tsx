@@ -25,7 +25,7 @@ export function HeroSection({ data }: HeroSectionProps) {
   const [imageError, setImageError] = useState(false)
 
   const defaultData = {
-    title: "LUXURY REAL ESTATE REDEFINED",
+    title: "DON ADAMS PRESENTS",
     subtitle: "HOMES OF HOLLYWOOD",
     description:
       "Experience unparalleled service in luxury real estate. From Beverly Hills to Malibu, we deliver exceptional results that exceed expectations.",
@@ -89,18 +89,21 @@ export function HeroSection({ data }: HeroSectionProps) {
 
       <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
         <div className={`mb-8 ${isLoaded ? "animate-fade-in-up" : "opacity-0"}`}>
-          <div className="text-[#D4AF37] text-xl md:text-2xl font-light tracking-[0.2em] mb-4 animate-stagger-1">
-            {heroData.subtitle}
-          </div>
-          <h1 className="heading-primary text-4xl md:text-7xl lg:text-8xl text-white mb-8 leading-tight animate-stagger-2">
+          <div className="text-[#D4AF37] text-lg md:text-xl font-light tracking-[0.2em] mb-4 animate-stagger-1">
             {heroData.title}
+          </div>
+          <h1 className="heading-primary text-5xl md:text-8xl lg:text-9xl text-white mb-6 leading-tight animate-stagger-2">
+            {heroData.subtitle}
           </h1>
-          <div className="gold-accent-line mx-auto mb-8 animate-stagger-3" />
+          <div className="text-[#D4AF37] text-xl md:text-3xl font-semibold tracking-wide mb-6 animate-stagger-3">
+            Get Smart with Real Estate
+          </div>
+          <div className="gold-accent-line mx-auto mb-8 animate-stagger-4" />
         </div>
 
         <p
           className={`text-lg md:text-xl mb-12 max-w-3xl mx-auto text-gray-200 leading-relaxed text-body ${
-            isLoaded ? "animate-fade-in-up animate-stagger-4" : "opacity-0"
+            isLoaded ? "animate-fade-in-up animate-stagger-5" : "opacity-0"
           }`}
         >
           {heroData.description}
@@ -126,13 +129,6 @@ export function HeroSection({ data }: HeroSectionProps) {
           >
             <Link href="/book-appointment">SCHEDULE CONSULTATION</Link>
           </Button>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-[#D4AF37] rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-[#D4AF37] rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>

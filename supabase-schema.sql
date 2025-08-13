@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS client_requirements (
 -- Insert default hero content
 INSERT INTO hero_content (title, subtitle, description, cta_text, cta_link) 
 VALUES (
-    'Luxury Real Estate Excellence',
+    'Don Adams presents',
     'The Altman Brothers',
     'Discover exceptional properties and unparalleled service with the leading luxury real estate team in Los Angeles.',
     'Explore Properties',

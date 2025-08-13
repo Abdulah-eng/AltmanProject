@@ -162,127 +162,125 @@ export function VideoManager() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <div>
-          <h2 className="text-2xl font-bold">Video Management</h2>
-          <p className="text-gray-600">Manage YouTube videos for media page and home page</p>
-        </div>
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button onClick={resetForm}>
-              <Plus className="w-4 h-4 mr-2" />
-              Add Video
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle>{editingVideo ? "Edit Video" : "Add New Video"}</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold">Video Management</h2>
+        <p className="text-gray-600">Manage YouTube videos for home page display</p>
+      </div>
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogTrigger asChild>
+          <Button onClick={resetForm}>
+            <Plus className="w-4 h-4 mr-2" />
+            Add Video
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>{editingVideo ? "Edit Video" : "Add New Video"}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="title">Title *</Label>
+              <Input
+                id="title"
+                value={formData.title}
+                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                placeholder="Enter video title"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="description">Description</Label>
+              <Textarea
+                id="description"
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                placeholder="Enter video description"
+                rows={3}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="youtube_url">YouTube URL *</Label>
+              <Input
+                id="youtube_url"
+                value={formData.youtube_url}
+                onChange={(e) => setFormData({ ...formData, youtube_url: e.target.value })}
+                placeholder="https://www.youtube.com/watch?v=..."
+              />
+              <p className="text-sm text-gray-500 mt-1">Supports YouTube watch URLs and short URLs</p>
+            </div>
+
+            <div>
+              <Label htmlFor="thumbnail_url">Custom Thumbnail URL (Optional)</Label>
+              <Input
+                id="thumbnail_url"
+                value={formData.thumbnail_url}
+                onChange={(e) => setFormData({ ...formData, thumbnail_url: e.target.value })}
+                placeholder="Leave empty to use YouTube thumbnail"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="title">Title *</Label>
+                <Label htmlFor="order_index">Display Order</Label>
                 <Input
-                  id="title"
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  placeholder="Enter video title"
+                  id="order_index"
+                  type="number"
+                  value={formData.order_index}
+                  onChange={(e) => setFormData({ ...formData, order_index: parseInt(e.target.value) || 0 })}
+                  placeholder="0"
                 />
-              </div>
-
-              <div>
-                <Label htmlFor="description">Description</Label>
-                <Textarea
-                  id="description"
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="Enter video description"
-                  rows={3}
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="youtube_url">YouTube URL *</Label>
-                <Input
-                  id="youtube_url"
-                  value={formData.youtube_url}
-                  onChange={(e) => setFormData({ ...formData, youtube_url: e.target.value })}
-                  placeholder="https://www.youtube.com/watch?v=..."
-                />
-                <p className="text-sm text-gray-500 mt-1">Supports YouTube watch URLs and short URLs</p>
-              </div>
-
-              <div>
-                <Label htmlFor="thumbnail_url">Custom Thumbnail URL (Optional)</Label>
-                <Input
-                  id="thumbnail_url"
-                  value={formData.thumbnail_url}
-                  onChange={(e) => setFormData({ ...formData, thumbnail_url: e.target.value })}
-                  placeholder="Leave empty to use YouTube thumbnail"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="order_index">Display Order</Label>
-                  <Input
-                    id="order_index"
-                    type="number"
-                    value={formData.order_index}
-                    onChange={(e) => setFormData({ ...formData, order_index: parseInt(e.target.value) || 0 })}
-                    placeholder="0"
-                  />
-                  <p className="text-sm text-gray-500 mt-1">Lower numbers appear first</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-6">
-                <div className="flex items-center space-x-2">
-                  <Switch
-                    id="published"
-                    checked={formData.published}
-                    onCheckedChange={(checked) => setFormData({ ...formData, published: checked })}
-                  />
-                  <Label htmlFor="published">Published</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Switch
-                    id="featured"
-                    checked={formData.featured}
-                    onCheckedChange={(checked) => setFormData({ ...formData, featured: checked })}
-                  />
-                  <Label htmlFor="featured">Featured</Label>
-                </div>
-              </div>
-
-              <div className="flex space-x-4 pt-4">
-                <Button 
-                  onClick={handleSave} 
-                  disabled={loading}
-                  className="flex-1"
-                >
-                  {loading ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      {editingVideo ? "Updating..." : "Adding..."}
-                    </>
-                  ) : (
-                    <>
-                      {editingVideo ? "Update Video" : "Add Video"}
-                    </>
-                  )}
-                </Button>
-                <Button 
-                  variant="outline" 
-                  onClick={() => setIsDialogOpen(false)}
-                  disabled={loading}
-                >
-                  Cancel
-                </Button>
+                <p className="text-sm text-gray-500 mt-1">Lower numbers appear first</p>
               </div>
             </div>
-          </DialogContent>
-        </Dialog>
-      </div>
+
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-2">
+                <Switch
+                  id="published"
+                  checked={formData.published}
+                  onCheckedChange={(checked) => setFormData({ ...formData, published: checked })}
+                />
+                <Label htmlFor="published">Published</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Switch
+                  id="featured"
+                  checked={formData.featured}
+                  onCheckedChange={(checked) => setFormData({ ...formData, featured: checked })}
+                />
+                <Label htmlFor="featured">Featured</Label>
+              </div>
+            </div>
+
+            <div className="flex space-x-4 pt-4">
+              <Button 
+                onClick={handleSave} 
+                disabled={loading}
+                className="flex-1"
+              >
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    {editingVideo ? "Updating..." : "Adding..."}
+                  </>
+                ) : (
+                  <>
+                    {editingVideo ? "Update Video" : "Add Video"}
+                  </>
+                )}
+              </Button>
+              <Button 
+                variant="outline" 
+                onClick={() => setIsDialogOpen(false)}
+                disabled={loading}
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Card>
         <CardHeader>

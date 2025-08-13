@@ -55,14 +55,8 @@ The `images` table includes the following fields:
 - `hero_image`: Blog Page Hero Image
 - `default_image`: Blog Default Image
 
-### Media Page (`media`)
-- `hero_image`: Media Page Hero Image
-- `youtube_image`: Media YouTube Image
-- `press_image`: Media Press Image
-
 ### Training Page (`training`)
 - `hero_image`: Training Page Hero Image
-- `speaking_image`: Training Speaking Image
 
 ## Using the Admin Dashboard
 

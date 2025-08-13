@@ -19,7 +19,7 @@ async function setupDatabase() {
     const { error: heroError } = await supabase
       .from('hero_content')
       .upsert({
-        title: 'Luxury Real Estate Excellence',
+        title: 'Don Adams presents',
         subtitle: 'The Altman Brothers',
         description: 'Discover exceptional properties and unparalleled service with the leading luxury real estate team in Los Angeles.',
         image_url: '/placeholder.svg?height=800&width=1600&text=Luxury Real Estate Hero',
