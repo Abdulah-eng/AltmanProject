@@ -3,7 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { createClientClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
-import { LogOut, User, Settings } from "lucide-react"
+import { LogOut, User } from "lucide-react"
+import { SettingsDialog } from "./settings-dialog"
 
 interface AdminHeaderProps {
   user: any
@@ -58,14 +59,7 @@ export function AdminHeader({ user }: AdminHeaderProps) {
             </div>
 
             {/* Settings Button */}
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="border-gray-700 text-gray-300 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300"
-            >
-              <Settings className="w-4 h-4 mr-2" />
-              Settings
-            </Button>
+            <SettingsDialog user={user} />
 
             {/* Logout Button */}
             <Button 

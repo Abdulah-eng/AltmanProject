@@ -9,13 +9,24 @@ import Link from "next/link"
 import Image from "next/image"
 import { getFeaturedProperties, Property } from "@/lib/property-utils"
 
-export function FeaturedProperties() {
+interface FeaturedPropertiesProps {
+  properties?: Property[] | null
+}
+
+export function FeaturedProperties({ properties: propProperties }: FeaturedPropertiesProps) {
   const [properties, setProperties] = useState<Property[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetchFeaturedProperties()
-  }, [])
+    if (propProperties) {
+      // Use properties passed from parent
+      setProperties(propProperties)
+      setLoading(false)
+    } else {
+      // Fallback to fetching own data
+      fetchFeaturedProperties()
+    }
+  }, [propProperties])
 
   const fetchFeaturedProperties = async () => {
     try {

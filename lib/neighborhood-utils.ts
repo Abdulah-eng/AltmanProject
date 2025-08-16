@@ -1,5 +1,4 @@
-import { createServerClient } from "@/lib/supabase/server"
-import { createClientClient } from "@/lib/supabase/client"
+import { createClientClient } from './supabase/client'
 
 export interface Neighborhood {
   id: string
@@ -12,13 +11,25 @@ export interface Neighborhood {
   updated_at: string
 }
 
-/**
- * Fetch all neighborhoods ordered by display order
- */
-export async function getNeighborhoods(): Promise<Neighborhood[]> {
+export interface CreateNeighborhoodData {
+  name: string
+  description?: string
+  image_file?: string
+  featured?: boolean
+  display_order?: number
+}
+
+export interface UpdateNeighborhoodData {
+  name?: string
+  description?: string
+  image_file?: string
+  featured?: boolean
+  display_order?: number
+}
+
+export async function fetchNeighborhoods(): Promise<Neighborhood[]> {
   try {
-    const supabase = await createServerClient()
-    
+    const supabase = createClientClient()
     const { data, error } = await supabase
       .from('neighborhoods')
       .select('*')
@@ -26,11 +37,10 @@ export async function getNeighborhoods(): Promise<Neighborhood[]> {
       .order('created_at', { ascending: false })
 
     if (error) {
-      console.warn('Failed to fetch neighborhoods:', error)
+      console.error('Error fetching neighborhoods:', error)
       return []
     }
 
-    console.log('Neighborhoods found:', data?.length || 0)
     return data || []
   } catch (error) {
     console.error('Error fetching neighborhoods:', error)
@@ -38,26 +48,21 @@ export async function getNeighborhoods(): Promise<Neighborhood[]> {
   }
 }
 
-/**
- * Fetch featured neighborhoods for home page
- */
-export async function getFeaturedNeighborhoods(limit: number = 4): Promise<Neighborhood[]> {
+export async function fetchFeaturedNeighborhoods(): Promise<Neighborhood[]> {
   try {
-    const supabase = await createServerClient()
-    
+    const supabase = createClientClient()
     const { data, error } = await supabase
       .from('neighborhoods')
       .select('*')
       .eq('featured', true)
       .order('display_order', { ascending: true })
-      .limit(limit)
+      .order('created_at', { ascending: false })
 
     if (error) {
-      console.warn('Failed to fetch featured neighborhoods:', error)
+      console.error('Error fetching featured neighborhoods:', error)
       return []
     }
 
-    console.log('Featured neighborhoods found:', data?.length || 0)
     return data || []
   } catch (error) {
     console.error('Error fetching featured neighborhoods:', error)
@@ -65,13 +70,72 @@ export async function getFeaturedNeighborhoods(limit: number = 4): Promise<Neigh
   }
 }
 
-/**
- * Fetch a single neighborhood by ID
- */
+export async function createNeighborhood(data: CreateNeighborhoodData): Promise<Neighborhood | null> {
+  try {
+    const supabase = createClientClient()
+    const { data: newNeighborhood, error } = await supabase
+      .from('neighborhoods')
+      .insert([data])
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error creating neighborhood:', error)
+      return null
+    }
+
+    return newNeighborhood
+  } catch (error) {
+    console.error('Error creating neighborhood:', error)
+    return null
+  }
+}
+
+export async function updateNeighborhood(id: string, data: UpdateNeighborhoodData): Promise<Neighborhood | null> {
+  try {
+    const supabase = createClientClient()
+    const { data: updatedNeighborhood, error } = await supabase
+      .from('neighborhoods')
+      .update(data)
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error updating neighborhood:', error)
+      return null
+    }
+
+    return updatedNeighborhood
+  } catch (error) {
+    console.error('Error updating neighborhood:', error)
+    return null
+  }
+}
+
+export async function deleteNeighborhood(id: string): Promise<boolean> {
+  try {
+    const supabase = createClientClient()
+    const { error } = await supabase
+      .from('neighborhoods')
+      .delete()
+      .eq('id', id)
+
+    if (error) {
+      console.error('Error deleting neighborhood:', error)
+      return false
+    }
+
+    return true
+  } catch (error) {
+    console.error('Error deleting neighborhood:', error)
+    return false
+  }
+}
+
 export async function getNeighborhoodById(id: string): Promise<Neighborhood | null> {
   try {
-    const supabase = await createServerClient()
-    
+    const supabase = createClientClient()
     const { data, error } = await supabase
       .from('neighborhoods')
       .select('*')
@@ -79,13 +143,13 @@ export async function getNeighborhoodById(id: string): Promise<Neighborhood | nu
       .single()
 
     if (error) {
-      console.warn(`Neighborhood not found for ID: ${id}`)
+      console.error('Error fetching neighborhood:', error)
       return null
     }
 
     return data
   } catch (error) {
-    console.error(`Error fetching neighborhood with ID ${id}:`, error)
+    console.error('Error fetching neighborhood:', error)
     return null
   }
 } 

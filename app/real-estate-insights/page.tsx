@@ -1,291 +1,230 @@
 "use client"
 
-import { useState } from "react"
-import { ArrowLeft, Calendar, User, ArrowRight, Mail } from "lucide-react"
+import { useState, useEffect } from "react"
+import { ArrowLeft, Calendar, User, ArrowRight, Search } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-
-interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  category: string
-  date: string
-  author: string
-  image: string
-  readTime: string
-}
-
-const sampleBlogPosts: BlogPost[] = [
-  {
-    id: "1",
-    title: "The Ultimate Guide to Hollywood Hills Real Estate",
-    excerpt: "Discover everything you need to know about buying, selling, and investing in Hollywood Hills real estate. From market trends to neighborhood insights.",
-    category: "Market Insights",
-    date: "May 15, 2023",
-    author: "Don Adams",
-    image: "/placeholder.svg?height=300&width=400&text=Hollywood+Hills+Guide",
-    readTime: "8 min read"
-  },
-  {
-    id: "2",
-    title: "How to Stage Your Hollywood Home for Maximum Value",
-    excerpt: "Learn the professional staging techniques that can increase your home's sale price by 10-20%. Expert tips from Hollywood's top real estate professionals.",
-    category: "Selling Tips",
-    date: "April 22, 2023",
-    author: "Don Adams",
-    image: "/placeholder.svg?height=300&width=400&text=Home+Staging+Tips",
-    readTime: "6 min read"
-  },
-  {
-    id: "3",
-    title: "Celebrity Home Features That Are Becoming Industry Standards",
-    excerpt: "Explore the luxury features and amenities that started in celebrity homes and are now becoming standard in high-end real estate across Los Angeles.",
-    category: "Luxury Living",
-    date: "March 10, 2023",
-    author: "Don Adams",
-    image: "/placeholder.svg?height=300&width=400&text=Celebrity+Home+Features",
-    readTime: "7 min read"
-  },
-  {
-    id: "4",
-    title: "Investment Opportunities in Hollywood's Emerging Neighborhoods",
-    excerpt: "Discover the up-and-coming areas in and around Hollywood that offer strong investment potential before they become the next hot spots.",
-    category: "Investment",
-    date: "February 18, 2023",
-    author: "Don Adams",
-    image: "/placeholder.svg?height=300&width=400&text=Investment+Opportunities",
-    readTime: "9 min read"
-  },
-  {
-    id: "5",
-    title: "Navigating Hollywood's Luxury Rental Market",
-    excerpt: "A comprehensive guide for high-end tenants and property investors looking to understand the luxury rental landscape in Hollywood.",
-    category: "Rentals",
-    date: "January 25, 2023",
-    author: "Don Adams",
-    image: "/placeholder.svg?height=300&width=400&text=Luxury+Rental+Market",
-    readTime: "5 min read"
-  },
-  {
-    id: "6",
-    title: "Architectural Styles That Define Hollywood Luxury",
-    excerpt: "From Spanish Revival to Ultra-Modern, explore the iconic architectural styles that have shaped Hollywood's most prestigious neighborhoods.",
-    category: "Architecture",
-    date: "December 12, 2022",
-    author: "Don Adams",
-    image: "/placeholder.svg?height=300&width=400&text=Architectural+Styles",
-    readTime: "10 min read"
-  },
-  {
-    id: "7",
-    title: "The Future of Smart Homes in Luxury Real Estate",
-    excerpt: "How technology is transforming luxury homes in Los Angeles. From AI-powered systems to sustainable smart features that increase property value.",
-    category: "Technology",
-    date: "November 28, 2022",
-    author: "Don Adams",
-    image: "/placeholder.svg?height=300&width=400&text=Smart+Homes",
-    readTime: "8 min read"
-  },
-  {
-    id: "8",
-    title: "Seasonal Market Trends in Los Angeles Real Estate",
-    excerpt: "Understanding how the seasons affect property values, inventory, and buyer behavior in the competitive Los Angeles luxury real estate market.",
-    category: "Market Insights",
-    date: "October 15, 2022",
-    author: "Don Adams",
-    image: "/placeholder.svg?height=300&width=400&text=Seasonal+Trends",
-    readTime: "6 min read"
-  },
-  {
-    id: "9",
-    title: "Building Your Real Estate Portfolio in Hollywood",
-    excerpt: "Strategic advice for building a diverse real estate portfolio in one of America's most competitive luxury markets.",
-    category: "Investment",
-    date: "September 20, 2022",
-    author: "Don Adams",
-    image: "/placeholder.svg?height=300&width=400&text=Portfolio+Building",
-    readTime: "12 min read"
-  }
-]
-
-const categories = [
-  "All",
-  "Market Insights",
-  "Selling Tips",
-  "Luxury Living",
-  "Investment",
-  "Rentals",
-  "Architecture",
-  "Technology"
-]
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import { getAllInsights, RealEstateInsight } from "@/lib/real-estate-insights-utils"
+import Image from "next/image"
 
 export default function RealEstateInsightsPage() {
+  const [insights, setInsights] = useState<RealEstateInsight[]>([])
+  const [filteredInsights, setFilteredInsights] = useState<RealEstateInsight[]>([])
   const [selectedCategory, setSelectedCategory] = useState("All")
-  const [email, setEmail] = useState("")
+  const [searchTerm, setSearchTerm] = useState("")
+  const [loading, setLoading] = useState(true)
 
-  const filteredPosts = selectedCategory === "All" 
-    ? sampleBlogPosts 
-    : sampleBlogPosts.filter(post => post.category === selectedCategory)
+  useEffect(() => {
+    fetchInsights()
+  }, [])
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle newsletter subscription
-    console.log("Subscribing email:", email)
-    setEmail("")
+  const fetchInsights = async () => {
+    try {
+      setLoading(true)
+      const data = await getAllInsights()
+      setInsights(data)
+      setFilteredInsights(data)
+    } catch (error) {
+      console.error('Error fetching insights:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category)
+    filterInsights(category, searchTerm)
+  }
+
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term)
+    filterInsights(selectedCategory, term)
+  }
+
+  const filterInsights = (category: string, term: string) => {
+    let filtered = insights
+
+    if (category !== "All") {
+      filtered = filtered.filter(insight => insight.category === category)
+    }
+
+    if (term) {
+      filtered = filtered.filter(insight => 
+        insight.title.toLowerCase().includes(term.toLowerCase()) ||
+        insight.summary?.toLowerCase().includes(term.toLowerCase()) ||
+        insight.content.toLowerCase().includes(term.toLowerCase())
+      )
+    }
+
+    setFilteredInsights(filtered)
+  }
+
+  const categories = ["All", ...Array.from(new Set(insights.map(insight => insight.category)))]
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black text-white">
+        <Header />
+        <div className="container mx-auto px-4 py-20">
+          <div className="text-center">Loading insights...</div>
+        </div>
+        <Footer />
+      </div>
+    )
   }
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }}
-        ></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <Button variant="ghost" asChild className="mb-8 text-[#D4AF37] hover:text-white hover:bg-[#D4AF37]/10 transition-all duration-300">
-              <Link href="/"><ArrowLeft className="w-4 h-4 mr-2" />Back to Home</Link>
-            </Button>
-            <div className="animate-fade-in-up">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-wide">REAL ESTATE INSIGHTS</h1>
-              <div className="w-16 h-1 bg-[#D4AF37] mx-auto mb-8"></div>
-              <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Get smart with the latest trends, tips, and insights from Hollywood's premier real estate expert. Stay informed about the luxury real estate market in Los Angeles.
-              </p>
-            </div>
+    <div className="min-h-screen bg-black text-white">
+      <Header />
+      
+      <main className="container mx-auto px-4 py-20">
+        {/* Hero Section */}
+        <div className="text-center mb-16 animate-fade-in-up">
+          <div className="flex items-center justify-center mb-6">
+            <Link href="/" className="flex items-center text-[#D4AF37] hover:text-[#B8941F] transition-colors">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Home
+            </Link>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-wider mb-8">REAL ESTATE INSIGHTS</h1>
+          <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-6"></div>
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+            Expert analysis, market trends, and valuable insights to guide your real estate decisions
+          </p>
+        </div>
+
+        {/* Search and Filter Section */}
+        <div className="mb-12 space-y-6">
+          {/* Search Bar */}
+          <div className="relative max-w-md mx-auto">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Input
+              type="text"
+              placeholder="Search insights..."
+              value={searchTerm}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              className="pl-10 bg-gray-900 border-gray-700 text-white placeholder-gray-400 focus:border-[#D4AF37]"
+            />
+          </div>
+
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                onClick={() => handleCategoryChange(category)}
+                className={`${
+                  selectedCategory === category
+                    ? "bg-[#D4AF37] text-black hover:bg-[#B8941F]"
+                    : "border-gray-600 text-gray-300 hover:border-[#D4AF37] hover:text-[#D4AF37]"
+                } transition-all duration-300`}
+              >
+                {category}
+              </Button>
+            ))}
           </div>
         </div>
-      </section>
 
-      {/* Category Filter Section */}
-      <section className="py-12 bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                    selectedCategory === category
-                      ? "bg-[#D4AF37] text-black"
-                      : "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
+        {/* Insights Grid */}
+        {filteredInsights.length === 0 ? (
+          <div className="text-center py-20">
+            <p className="text-gray-400 text-lg mb-4">
+              {searchTerm || selectedCategory !== "All" 
+                ? "No insights found matching your criteria." 
+                : "No insights available at the moment."}
+            </p>
+            <p className="text-gray-500 text-sm">
+              {searchTerm || selectedCategory !== "All" 
+                ? "Try adjusting your search or category filter." 
+                : "Add insights through the admin panel to get started."}
+            </p>
           </div>
-        </div>
-      </section>
-
-      {/* Blog Posts Grid Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post, index) => (
-                <div key={post.id} className={`animate-fade-in-up animate-stagger-${(index % 3) + 1}`}>
-                  <Card className="bg-gray-800 border-gray-700 shadow-2xl hover:border-[#D4AF37]/50 transition-all duration-300 h-full">
-                    <CardContent className="p-0 h-full flex flex-col">
-                      {/* Blog Post Image */}
-                      <div className="relative">
-                        <div className="w-full h-64 bg-gray-700 rounded-t-lg"></div>
-                        <Badge className="absolute top-3 left-3 bg-[#D4AF37] text-black font-bold text-xs px-3 py-1">
-                          {post.category}
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {filteredInsights.map((insight) => (
+              <Card key={insight.id} className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 group overflow-hidden hover-lift">
+                <CardContent className="p-0">
+                  {insight.image_file && (
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/images/${insight.image_file}`}
+                        alt={insight.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement
+                          target.style.display = 'none'
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                      
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-[#D4AF37] text-black hover:bg-[#B8941F] border-0">
+                          {insight.category.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
                         </Badge>
                       </div>
-
-                      {/* Blog Post Details */}
-                      <div className="p-6 flex-1 flex flex-col">
-                        {/* Metadata */}
-                        <div className="flex items-center gap-4 text-gray-400 text-sm mb-4">
-                          <div className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4" />
-                            <span>{post.date}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <User className="w-4 h-4" />
-                            <span>{post.author}</span>
-                          </div>
-                        </div>
-                        
-                        {/* Title */}
-                        <h3 className="text-xl font-bold text-white mb-4 flex-1 leading-tight">
-                          {post.title}
-                        </h3>
-                        
-                        {/* Excerpt */}
-                        <p className="text-gray-300 text-sm mb-6 leading-relaxed flex-1">
-                          {post.excerpt}
-                        </p>
-                        
-                        {/* Read More Link */}
-                        <Link
-                          href={`/insights/${post.id}`}
-                          className="inline-flex items-center text-[#D4AF37] hover:text-white transition-colors font-medium mt-auto"
-                        >
-                          Read More
-                          <ArrowRight className="w-4 h-4 ml-1" />
-                        </Link>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Subscription Section */}
-      <section className="py-20 bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="animate-fade-in-up">
-              <Card className="bg-gray-800 border-gray-700 shadow-2xl">
-                <CardContent className="p-12">
-                  <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-                    <div className="text-center lg:text-left">
-                      <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Stay Updated
-                      </h3>
-                      <p className="text-lg text-gray-300">
-                        Subscribe to our newsletter for the latest real estate insights.
-                      </p>
                     </div>
-                    <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-                      <Input
-                        type="email"
-                        placeholder="Your Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="bg-black border-gray-700 text-white placeholder-gray-400 focus:border-[#D4AF37] focus:ring-[#D4AF37] min-w-[280px]"
-                        required
-                      />
-                      <Button 
-                        type="submit"
-                        className="bg-[#D4AF37] text-black hover:bg-[#B8941F] transition-all duration-300 font-bold px-8 py-4"
-                      >
-                        <Mail className="w-4 h-4 mr-2" />
-                        Subscribe
-                      </Button>
-                    </form>
+                  )}
+                  
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#D4AF37] transition-colors line-clamp-2">
+                      {insight.title}
+                    </h3>
+                    
+                    {insight.summary && (
+                      <p className="text-gray-400 mb-4 line-clamp-3">
+                        {insight.summary}
+                      </p>
+                    )}
+                    
+                    <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                      {insight.author && (
+                        <div className="flex items-center">
+                          <User className="w-4 h-4 mr-1" />
+                          <span>{insight.author}</span>
+                        </div>
+                      )}
+                      <div className="flex items-center">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        <span>{new Date(insight.created_at).toLocaleDateString()}</span>
+                      </div>
+                    </div>
+                    
+                    <Button asChild className="w-full bg-[#D4AF37] hover:bg-[#B8941F] text-black group-hover:bg-[#B8941F] transition-colors">
+                      <Link href={`/real-estate-insights/${insight.id}`}>
+                        Read More
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            ))}
+          </div>
+        )}
+
+        {/* Call to Action */}
+        <div className="text-center">
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">Stay Updated with Market Insights</h3>
+            <p className="text-gray-300 mb-6">
+              Get the latest real estate market analysis, investment strategies, and expert advice delivered to your inbox.
+            </p>
+            <Button asChild size="lg" className="bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold px-8 py-4">
+              <Link href="/contact">Get in Touch</Link>
+            </Button>
           </div>
         </div>
-      </section>
-    </main>
+      </main>
+
+      <Footer />
+    </div>
   )
 }

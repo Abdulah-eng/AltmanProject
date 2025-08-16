@@ -4,6 +4,8 @@ import { WildfireSupport } from "@/components/wildfire-support"
 import { PropertyManagementServices } from "@/components/property-management-services"
 import { PremierNeighborhoodsSection } from "@/components/premier-neighborhoods-section"
 import { NewDevelopmentsSection } from "@/components/new-developments-section"
+import { RealEstateInsightsSection } from "@/components/real-estate-insights-section"
+
 import { AboutDonAdamsSection } from "@/components/about-don-adams-section"
 import { WhyChooseDonAdamsSection } from "@/components/why-choose-don-adams-section"
 import { SpecialOffersSection } from "@/components/special-offers-section"
@@ -18,6 +20,10 @@ export default async function HomePage() {
   let heroData = null
   let blogs = null
   let testimonials = null
+  let neighborhoods = null
+  let newDevelopments = null
+  let properties = null
+  let insights = null
 
   try {
     const supabase = await createServerClient()
@@ -40,6 +46,48 @@ export default async function HomePage() {
       .eq("published", true)
       .order("created_at", { ascending: false })
     testimonials = testimonialsResult.data
+
+    // Fetch featured neighborhoods
+    const neighborhoodsResult = await supabase
+      .from("neighborhoods")
+      .select("*")
+      .eq("featured", true)
+      .order("display_order", { ascending: true })
+      .order("created_at", { ascending: false })
+    neighborhoods = neighborhoodsResult.data
+
+    // Fetch featured new developments
+    const newDevelopmentsResult = await supabase
+      .from("new_developments")
+      .select("*")
+      .eq("featured", true)
+      .order("display_order", { ascending: true })
+      .order("created_at", { ascending: false })
+    newDevelopments = newDevelopmentsResult.data
+
+    // Fetch featured properties
+    const propertiesResult = await supabase
+      .from("properties")
+      .select("*")
+      .eq("featured", true)
+      .order("created_at", { ascending: false })
+      .limit(6)
+    properties = propertiesResult.data
+    
+    // Debug: Log properties query results
+    console.log('Properties query result:', propertiesResult)
+    console.log('Properties data:', properties)
+
+    // Fetch featured insights
+    const insightsResult = await supabase
+      .from("real_estate_insights")
+      .select("*")
+      .eq("featured", true)
+      .eq("published", true)
+      .order("display_order", { ascending: true })
+      .order("created_at", { ascending: false })
+      .limit(3)
+    insights = insightsResult.data
   } catch (error) {
     console.log("Database not configured, using default data")
   }
@@ -49,9 +97,10 @@ export default async function HomePage() {
       <Header />
       <main>
         <HeroSection data={heroData} />
-        <FeaturedProperties />
-        <PremierNeighborhoodsSection />
-        <NewDevelopmentsSection />
+        <FeaturedProperties properties={properties} />
+        <PremierNeighborhoodsSection neighborhoods={neighborhoods} />
+        <NewDevelopmentsSection developments={newDevelopments} />
+        <RealEstateInsightsSection insights={insights} />
         <WildfireSupport />
         <AboutDonAdamsSection />
         <WhyChooseDonAdamsSection />

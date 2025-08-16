@@ -188,4 +188,136 @@ export function getPropertyTypeDisplay(type: string): string {
     'investment': 'Investment Property'
   }
   return typeMap[type] || type.replace('_', ' ').toUpperCase()
+}
+
+/**
+ * Get unique cities from properties
+ */
+export async function getUniqueCities(): Promise<string[]> {
+  try {
+    const supabase = createClientClient()
+    
+    const { data, error } = await supabase
+      .from('properties')
+      .select('city')
+      .not('city', 'is', null)
+      .order('city')
+
+    if (error) {
+      console.warn('Failed to fetch unique cities:', error)
+      return []
+    }
+
+    const cities = [...new Set(data?.map(item => item.city) || [])]
+    return cities
+  } catch (error) {
+    console.error('Error fetching unique cities:', error)
+    return []
+  }
+}
+
+/**
+ * Get unique property types from properties
+ */
+export async function getUniquePropertyTypes(): Promise<string[]> {
+  try {
+    const supabase = createClientClient()
+    
+    const { data, error } = await supabase
+      .from('properties')
+      .select('property_type')
+      .not('property_type', 'is', null)
+      .order('property_type')
+
+    if (error) {
+      console.warn('Failed to fetch unique property types:', error)
+      return []
+    }
+
+    const types = [...new Set(data?.map(item => item.property_type) || [])]
+    return types
+  } catch (error) {
+    console.error('Error fetching unique property types:', error)
+    return []
+  }
+}
+
+/**
+ * Get price ranges for filters based on actual data
+ */
+export async function getPriceRanges(): Promise<{ min: number; max: number }> {
+  try {
+    const supabase = createClientClient()
+    
+    const { data, error } = await supabase
+      .from('properties')
+      .select('price')
+      .not('price', 'is', null)
+
+    if (error) {
+      console.warn('Failed to fetch price ranges:', error)
+      return { min: 0, max: 10000000 }
+    }
+
+    const prices = data?.map(item => item.price) || []
+    const min = Math.min(...prices, 0)
+    const max = Math.max(...prices, 10000000)
+    
+    return { min, max }
+  } catch (error) {
+    console.error('Error fetching price ranges:', error)
+    return { min: 0, max: 10000000 }
+  }
+}
+
+/**
+ * Get unique bedroom counts from properties
+ */
+export async function getUniqueBedroomCounts(): Promise<number[]> {
+  try {
+    const supabase = createClientClient()
+    
+    const { data, error } = await supabase
+      .from('properties')
+      .select('bedrooms')
+      .not('bedrooms', 'is', null)
+      .order('bedrooms')
+
+    if (error) {
+      console.warn('Failed to fetch bedroom counts:', error)
+      return [1, 2, 3, 4, 5]
+    }
+
+    const counts = [...new Set(data?.map(item => item.bedrooms) || [])]
+    return counts.sort((a, b) => a - b)
+  } catch (error) {
+    console.error('Error fetching bedroom counts:', error)
+    return [1, 2, 3, 4, 5]
+  }
+}
+
+/**
+ * Get unique bathroom counts from properties
+ */
+export async function getUniqueBathroomCounts(): Promise<number[]> {
+  try {
+    const supabase = createClientClient()
+    
+    const { data, error } = await supabase
+      .from('properties')
+      .select('bathrooms')
+      .not('bathrooms', 'is', null)
+      .order('bathrooms')
+
+    if (error) {
+      console.warn('Failed to fetch bathroom counts:', error)
+      return [1, 1.5, 2, 2.5, 3]
+    }
+
+    const counts = [...new Set(data?.map(item => item.bathrooms) || [])]
+    return counts.sort((a, b) => a - b)
+  } catch (error) {
+    console.error('Error fetching bathroom counts:', error)
+    return [1, 1.5, 2, 2.5, 3]
+  }
 } 

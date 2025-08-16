@@ -10,18 +10,18 @@ import { HeroContentManager } from "@/components/admin/hero-content-manager"
 import { BlogManager } from "@/components/admin/blog-manager"
 import { TestimonialManager } from "@/components/admin/testimonial-manager"
 import { AppointmentManager } from "@/components/admin/appointment-manager"
-import { VideoManager } from "@/components/admin/video-manager"
 import { ImageManager } from "@/components/admin/image-manager"
 import { PropertyManager } from "@/components/admin/property-manager"
-import { TeamManager } from "@/components/admin/team-manager"
 import { CourseManager } from "@/components/admin/course-manager"
 import { SuccessStoriesManager } from "@/components/admin/success-stories-manager"
 import { ClientRequirementsManager } from "@/components/admin/client-requirements-manager"
 import { ChatbotLeadsManager } from "@/components/admin/chatbot-leads-manager"
 import { DocumentManager } from "@/components/admin/document-manager"
-import { SocialImageManager } from "@/components/admin/social-image-manager"
 import { ClientExperiencesManager } from "@/components/admin/client-experiences-manager"
-import { Home, FileText, MessageSquare, Calendar, Video, BarChart3, Image, Users, Building, UserCheck, BookOpen, Star, Bot, FolderOpen, Instagram, Heart } from "lucide-react"
+import { NeighborhoodManager } from "@/components/admin/neighborhood-manager"
+import { NewDevelopmentsManager } from "@/components/admin/new-developments-manager"
+import { RealEstateInsightsManager } from "@/components/admin/real-estate-insights-manager"
+import { Home, FileText, MessageSquare, Calendar, BarChart3, Image, Users, Building, BookOpen, Star, Bot, FolderOpen, Heart, MapPin, Building2 } from "lucide-react"
 import LuxuryLoadingScreen from "@/components/luxury-loading-screen"
 
 export default function AdminDashboard() {
@@ -31,9 +31,7 @@ export default function AdminDashboard() {
     appointments: 0,
     blogs: 0,
     testimonials: 0,
-    videos: 0,
     properties: 0,
-    teamMembers: 0,
     courses: 0,
     successStories: 0,
     chatbotLeads: 0
@@ -79,20 +77,9 @@ export default function AdminDashboard() {
         .select('*', { count: 'exact', head: true })
         .eq('published', true)
 
-      // Fetch published videos count
-      const { count: videosCount } = await supabase
-        .from('videos')
-        .select('*', { count: 'exact', head: true })
-        .eq('published', true)
-
       // Fetch properties count
       const { count: propertiesCount } = await supabase
         .from('properties')
-        .select('*', { count: 'exact', head: true })
-
-      // Fetch team members count
-      const { count: teamMembersCount } = await supabase
-        .from('team_members')
         .select('*', { count: 'exact', head: true })
 
       // Fetch courses count
@@ -114,9 +101,7 @@ export default function AdminDashboard() {
         appointments: appointmentsCount || 0,
         blogs: blogsCount || 0,
         testimonials: testimonialsCount || 0,
-        videos: videosCount || 0,
         properties: propertiesCount || 0,
-        teamMembers: teamMembersCount || 0,
         courses: coursesCount || 0,
         successStories: successStoriesCount || 0,
         chatbotLeads: chatbotLeadsCount || 0
@@ -169,11 +154,25 @@ export default function AdminDashboard() {
               Properties
             </TabsTrigger>
             <TabsTrigger 
-              value="team" 
+              value="neighborhoods" 
               className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
             >
-              <UserCheck className="w-4 h-4" />
-              Team
+              <MapPin className="w-4 h-4" />
+              Neighborhoods
+            </TabsTrigger>
+            <TabsTrigger 
+              value="new-developments" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
+              <Building2 className="w-4 h-4" />
+              New Developments
+            </TabsTrigger>
+            <TabsTrigger 
+              value="insights" 
+              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
+            >
+              <BarChart3 className="w-4 h-4" />
+              Real Estate Insights
             </TabsTrigger>
             <TabsTrigger 
               value="images" 
@@ -181,13 +180,6 @@ export default function AdminDashboard() {
             >
               <Image className="w-4 h-4" />
               Images
-            </TabsTrigger>
-            <TabsTrigger 
-              value="social-images" 
-              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
-            >
-              <Instagram className="w-4 h-4" />
-              Social Images
             </TabsTrigger>
             <TabsTrigger 
               value="blogs" 
@@ -223,13 +215,6 @@ export default function AdminDashboard() {
             >
               <Users className="w-4 h-4" />
               Requirements
-            </TabsTrigger>
-            <TabsTrigger 
-              value="videos" 
-              className="flex items-center gap-2 data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-300 hover:text-[#D4AF37] transition-all duration-300 rounded-md"
-            >
-              <Video className="w-4 h-4" />
-              Videos
             </TabsTrigger>
             <TabsTrigger 
               value="courses" 
@@ -283,15 +268,6 @@ export default function AdminDashboard() {
               </Card>
               <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
                 <CardHeader className="border-b border-gray-800">
-                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">TEAM MEMBERS</CardTitle>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="text-3xl font-bold text-white mb-2">{stats.teamMembers}</div>
-                  <p className="text-xs text-gray-400 tracking-wide">Total team members</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
-                <CardHeader className="border-b border-gray-800">
                   <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">PUBLISHED BLOGS</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
@@ -306,15 +282,6 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="text-3xl font-bold text-white mb-2">{stats.testimonials}</div>
                   <p className="text-xs text-gray-400 tracking-wide">Published testimonials</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
-                <CardHeader className="border-b border-gray-800">
-                  <CardTitle className="text-sm font-medium text-[#D4AF37] tracking-wide">VIDEOS</CardTitle>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="text-3xl font-bold text-white mb-2">{stats.videos}</div>
-                  <p className="text-xs text-gray-400 tracking-wide">Published videos</p>
                 </CardContent>
               </Card>
               <Card className="bg-gray-900 border-gray-800 hover:border-[#D4AF37] transition-all duration-300 hover-lift">
@@ -355,16 +322,20 @@ export default function AdminDashboard() {
             <PropertyManager />
           </TabsContent>
 
-          <TabsContent value="team" className="animate-fade-in-up">
-            <TeamManager />
+          <TabsContent value="neighborhoods" className="animate-fade-in-up">
+            <NeighborhoodManager />
+          </TabsContent>
+
+          <TabsContent value="new-developments" className="animate-fade-in-up">
+            <NewDevelopmentsManager />
+          </TabsContent>
+
+          <TabsContent value="insights" className="animate-fade-in-up">
+            <RealEstateInsightsManager />
           </TabsContent>
 
           <TabsContent value="images" className="animate-fade-in-up">
             <ImageManager />
-          </TabsContent>
-
-          <TabsContent value="social-images" className="animate-fade-in-up">
-            <SocialImageManager />
           </TabsContent>
 
           <TabsContent value="blogs" className="animate-fade-in-up">
@@ -385,10 +356,6 @@ export default function AdminDashboard() {
 
           <TabsContent value="requirements" className="animate-fade-in-up">
             <ClientRequirementsManager />
-          </TabsContent>
-
-          <TabsContent value="videos" className="animate-fade-in-up">
-            <VideoManager />
           </TabsContent>
           <TabsContent value="courses" className="animate-fade-in-up">
             <CourseManager />

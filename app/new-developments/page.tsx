@@ -1,109 +1,52 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { ArrowLeft, MapPin, Building2, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-
-interface Development {
-  id: string
-  name: string
-  location: string
-  description: string
-  startingPrice: string
-  completionDate: string
-  totalUnits: number
-  status: string
-  developer: string
-  image: string
-  features: string[]
-}
-
-const sampleDevelopments: Development[] = [
-  {
-    id: "1",
-    name: "The Residences at Hollywood",
-    location: "Hollywood Hills",
-    description: "Ultra-luxury condominiums with panoramic views of Los Angeles",
-    startingPrice: "$2.5M",
-    completionDate: "Fall 2023",
-    totalUnits: 45,
-    status: "Pre-Construction",
-    developer: "Hollywood Luxury Developments",
-    image: "/placeholder.svg?height=300&width=400&text=Hollywood+Residences",
-    features: ["Panoramic Views", "Luxury Finishes", "Concierge Service", "Rooftop Pool"]
-  },
-  {
-    id: "2",
-    name: "Sunset Boulevard Towers",
-    location: "West Hollywood",
-    description: "Modern architectural masterpieces in the heart of West Hollywood",
-    startingPrice: "$3.2M",
-    completionDate: "Spring 2024",
-    totalUnits: 32,
-    status: "Pre-Construction",
-    developer: "Sunset Luxury Group",
-    image: "/placeholder.svg?height=300&width=400&text=Sunset+Towers",
-    features: ["Modern Architecture", "Designer Interiors", "Smart Home Technology", "Private Balconies"]
-  },
-  {
-    id: "3",
-    name: "The Beverly Collection",
-    location: "Beverly Hills",
-    description: "Exclusive gated community of custom estates in Beverly Hills",
-    startingPrice: "$8.5M",
-    completionDate: "Summer 2024",
-    totalUnits: 12,
-    status: "Pre-Construction",
-    developer: "Beverly Hills Luxury Estates",
-    image: "/placeholder.svg?height=300&width=400&text=Beverly+Collection",
-    features: ["Custom Estates", "Gated Community", "Private Gardens", "Wine Cellars"]
-  },
-  {
-    id: "4",
-    name: "Malibu Oceanfront Residences",
-    location: "Malibu",
-    description: "Beachfront luxury condominiums with direct ocean access",
-    startingPrice: "$4.8M",
-    completionDate: "Winter 2024",
-    totalUnits: 28,
-    status: "Pre-Construction",
-    developer: "Malibu Coastal Developments",
-    image: "/placeholder.svg?height=300&width=400&text=Malibu+Oceanfront",
-    features: ["Beachfront Access", "Ocean Views", "Private Beach Club", "Waterfront Dining"]
-  },
-  {
-    id: "5",
-    name: "Downtown LA Skyline",
-    location: "Downtown Los Angeles",
-    description: "Contemporary urban living in the heart of downtown LA",
-    startingPrice: "$1.8M",
-    completionDate: "Spring 2024",
-    totalUnits: 120,
-    status: "Pre-Construction",
-    developer: "Downtown LA Development Group",
-    image: "/placeholder.svg?height=300&width=400&text=Downtown+Skyline",
-    features: ["City Views", "Urban Lifestyle", "Fitness Center", "Rooftop Lounge"]
-  },
-  {
-    id: "6",
-    name: "Bel Air Summit Estates",
-    location: "Bel Air",
-    description: "Prestigious hilltop estates with breathtaking city and ocean views",
-    startingPrice: "$12.5M",
-    completionDate: "Fall 2024",
-    totalUnits: 8,
-    status: "Pre-Construction",
-    developer: "Bel Air Luxury Properties",
-    image: "/placeholder.svg?height=300&width=400&text=Bel+Air+Summit",
-    features: ["Hilltop Views", "Custom Architecture", "Private Elevators", "Infinity Pools"]
-  }
-]
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import { getAllNewDevelopments, NewDevelopment } from "@/lib/new-developments-utils"
+import Image from "next/image"
 
 export default function NewDevelopmentsPage() {
+  const [developments, setDevelopments] = useState<NewDevelopment[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchDevelopments()
+  }, [])
+
+  const fetchDevelopments = async () => {
+    try {
+      setLoading(true)
+      const data = await getAllNewDevelopments()
+      setDevelopments(data)
+    } catch (error) {
+      console.error('Error fetching developments:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black text-white">
+        <Header />
+        <div className="container mx-auto px-4 py-20">
+          <div className="text-center">Loading developments...</div>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
+
   return (
-    <main className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white">
+      <Header />
+      <main>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">
         <div
@@ -132,77 +75,89 @@ export default function NewDevelopmentsPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {sampleDevelopments.map((development, index) => (
-                <div key={development.id} className={`animate-fade-in-up animate-stagger-${(index % 3) + 1}`}>
-                  <Card className="bg-gray-800 border-gray-700 shadow-2xl hover:border-[#D4AF37]/50 transition-all duration-300 h-full">
-                    <CardContent className="p-0 h-full flex flex-col">
-                      {/* Development Image */}
-                      <div className="relative">
-                        <div className="w-full h-64 bg-gray-700 rounded-t-lg"></div>
-                        <Badge className="absolute top-3 left-3 bg-[#D4AF37] text-black font-bold text-xs px-3 py-1">
-                          NEW DEVELOPMENT
-                        </Badge>
-                      </div>
+            {developments.length === 0 ? (
+              <div className="text-center py-20">
+                <p className="text-gray-400 text-lg mb-4">
+                  No new developments available at the moment.
+                </p>
+                <p className="text-gray-500 text-sm">
+                  Add new developments through the admin panel to get started.
+                </p>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {developments.map((development, index) => (
+                  <div key={development.id} className={`animate-fade-in-up animate-stagger-${(index % 3) + 1}`}>
+                    <Card className="bg-gray-800 border-gray-700 shadow-2xl hover:border-[#D4AF37]/50 transition-all duration-300 h-full">
+                      <CardContent className="p-0 h-full flex flex-col">
+                        {/* Development Image */}
+                        <div className="relative">
+                          {development.image_file ? (
+                            <div className="w-full h-64 relative overflow-hidden rounded-t-lg">
+                              <Image
+                                src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/images/${development.image_file}`}
+                                alt={development.name}
+                                fill
+                                className="object-cover"
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement
+                                  target.style.display = 'none'
+                                }}
+                              />
+                            </div>
+                          ) : (
+                            <div className="w-full h-64 bg-gray-700 rounded-t-lg"></div>
+                          )}
+                          <Badge className="absolute top-3 left-3 bg-[#D4AF37] text-black font-bold text-xs px-3 py-1">
+                            NEW DEVELOPMENT
+                          </Badge>
+                        </div>
 
-                      {/* Development Details */}
-                      <div className="p-6 flex-1 flex flex-col">
-                        {/* Location */}
-                        <div className="flex items-center gap-2 text-[#D4AF37] mb-3">
-                          <MapPin className="w-4 h-4" />
-                          <span className="text-sm font-medium">{development.location}</span>
+                        {/* Development Details */}
+                        <div className="p-6 flex-1 flex flex-col">
+                          {/* Location */}
+                          <div className="flex items-center gap-2 text-[#D4AF37] mb-3">
+                            <MapPin className="w-4 h-4" />
+                            <span className="text-sm font-medium">{development.location}</span>
+                          </div>
+                          
+                          {/* Development Name */}
+                          <h3 className="text-xl font-bold text-white mb-3 flex-1">
+                            {development.name}
+                          </h3>
+                          
+                          {/* Description */}
+                          <p className="text-gray-300 text-sm mb-6 leading-relaxed flex-1">
+                            {development.description}
+                          </p>
+                          
+                          {/* Data Grid */}
+                          <div className="grid grid-cols-2 gap-3 mb-6">
+                            <div className="bg-black rounded-lg p-3 text-center">
+                              <div className="text-xs text-gray-400 mb-1">PRICE RANGE</div>
+                              <div className="text-lg font-bold text-[#D4AF37]">{development.price_range || 'Contact for pricing'}</div>
+                            </div>
+                            <div className="bg-black rounded-lg p-3 text-center">
+                              <div className="text-xs text-gray-400 mb-1">STATUS</div>
+                              <div className="text-lg font-bold text-white">{development.status || 'Pre-Construction'}</div>
+                            </div>
+                          </div>
+                          
+                          {/* View Development Link */}
+                          <Link
+                            href={`/new-developments/${development.id}`}
+                            className="inline-flex items-center text-[#D4AF37] hover:text-white transition-colors font-medium mt-auto"
+                          >
+                            View Development
+                            <ArrowRight className="w-4 h-4 ml-1" />
+                          </Link>
                         </div>
-                        
-                        {/* Development Name */}
-                        <h3 className="text-xl font-bold text-white mb-3 flex-1">
-                          {development.name}
-                        </h3>
-                        
-                        {/* Description */}
-                        <p className="text-gray-300 text-sm mb-6 leading-relaxed flex-1">
-                          {development.description}
-                        </p>
-                        
-                        {/* Data Grid */}
-                        <div className="grid grid-cols-2 gap-3 mb-6">
-                          <div className="bg-black rounded-lg p-3 text-center">
-                            <div className="text-xs text-gray-400 mb-1">FROM</div>
-                            <div className="text-lg font-bold text-[#D4AF37]">{development.startingPrice}</div>
-                          </div>
-                          <div className="bg-black rounded-lg p-3 text-center">
-                            <div className="text-xs text-gray-400 mb-1">COMPLETION</div>
-                            <div className="text-lg font-bold text-[#D4AF37]">{development.completionDate}</div>
-                          </div>
-                          <div className="bg-black rounded-lg p-3 text-center">
-                            <div className="text-xs text-gray-400 mb-1">UNITS</div>
-                            <div className="text-lg font-bold text-white">{development.totalUnits}</div>
-                          </div>
-                          <div className="bg-black rounded-lg p-3 text-center">
-                            <div className="text-xs text-gray-400 mb-1">STATUS</div>
-                            <div className="text-lg font-bold text-white">{development.status}</div>
-                          </div>
-                        </div>
-                        
-                        {/* Developer */}
-                        <div className="flex items-center gap-2 text-gray-300 mb-4">
-                          <Building2 className="w-4 h-4 text-[#D4AF37]" />
-                          <span className="text-sm">{development.developer}</span>
-                        </div>
-                        
-                        {/* View Development Link */}
-                        <Link
-                          href={`/development/${development.id}`}
-                          className="inline-flex items-center text-[#D4AF37] hover:text-white transition-colors font-medium mt-auto"
-                        >
-                          View Development
-                          <ArrowRight className="w-4 h-4 ml-1" />
-                        </Link>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -233,6 +188,8 @@ export default function NewDevelopmentsPage() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+      <Footer />
+    </div>
   )
 }

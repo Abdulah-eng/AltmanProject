@@ -1,5 +1,4 @@
-import { createServerClient } from "@/lib/supabase/server"
-import { createClientClient } from "@/lib/supabase/client"
+import { createClientClient } from './supabase/client'
 
 export interface NewDevelopment {
   id: string
@@ -14,13 +13,29 @@ export interface NewDevelopment {
   updated_at: string
 }
 
-/**
- * Fetch all new developments ordered by display order
- */
-export async function getNewDevelopments(): Promise<NewDevelopment[]> {
+export interface CreateNewDevelopmentData {
+  name: string
+  description?: string
+  image_file?: string
+  location?: string
+  price_range?: string
+  featured?: boolean
+  display_order?: number
+}
+
+export interface UpdateNewDevelopmentData {
+  name?: string
+  description?: string
+  image_file?: string
+  location?: string
+  price_range?: string
+  featured?: boolean
+  display_order?: number
+}
+
+export async function fetchNewDevelopments(): Promise<NewDevelopment[]> {
   try {
-    const supabase = await createServerClient()
-    
+    const supabase = createClientClient()
     const { data, error } = await supabase
       .from('new_developments')
       .select('*')
@@ -28,11 +43,10 @@ export async function getNewDevelopments(): Promise<NewDevelopment[]> {
       .order('created_at', { ascending: false })
 
     if (error) {
-      console.warn('Failed to fetch new developments:', error)
+      console.error('Error fetching new developments:', error)
       return []
     }
 
-    console.log('New developments found:', data?.length || 0)
     return data || []
   } catch (error) {
     console.error('Error fetching new developments:', error)
@@ -40,26 +54,21 @@ export async function getNewDevelopments(): Promise<NewDevelopment[]> {
   }
 }
 
-/**
- * Fetch featured new developments for home page
- */
-export async function getFeaturedNewDevelopments(limit: number = 4): Promise<NewDevelopment[]> {
+export async function fetchFeaturedNewDevelopments(): Promise<NewDevelopment[]> {
   try {
-    const supabase = await createServerClient()
-    
+    const supabase = createClientClient()
     const { data, error } = await supabase
       .from('new_developments')
       .select('*')
       .eq('featured', true)
       .order('display_order', { ascending: true })
-      .limit(limit)
+      .order('created_at', { ascending: false })
 
     if (error) {
-      console.warn('Failed to fetch featured new developments:', error)
+      console.error('Error fetching featured new developments:', error)
       return []
     }
 
-    console.log('Featured new developments found:', data?.length || 0)
     return data || []
   } catch (error) {
     console.error('Error fetching featured new developments:', error)
@@ -67,13 +76,72 @@ export async function getFeaturedNewDevelopments(limit: number = 4): Promise<New
   }
 }
 
-/**
- * Fetch a single new development by ID
- */
+export async function createNewDevelopment(data: CreateNewDevelopmentData): Promise<NewDevelopment | null> {
+  try {
+    const supabase = createClientClient()
+    const { data: newDevelopment, error } = await supabase
+      .from('new_developments')
+      .insert([data])
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error creating new development:', error)
+      return null
+    }
+
+    return newDevelopment
+  } catch (error) {
+    console.error('Error creating new development:', error)
+    return null
+  }
+}
+
+export async function updateNewDevelopment(id: string, data: UpdateNewDevelopmentData): Promise<NewDevelopment | null> {
+  try {
+    const supabase = createClientClient()
+    const { data: updatedDevelopment, error } = await supabase
+      .from('new_developments')
+      .update(data)
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error updating new development:', error)
+      return null
+    }
+
+    return updatedDevelopment
+  } catch (error) {
+    console.error('Error updating new development:', error)
+    return null
+  }
+}
+
+export async function deleteNewDevelopment(id: string): Promise<boolean> {
+  try {
+    const supabase = createClientClient()
+    const { error } = await supabase
+      .from('new_developments')
+      .delete()
+      .eq('id', id)
+
+    if (error) {
+      console.error('Error deleting new development:', error)
+      return false
+    }
+
+    return true
+  } catch (error) {
+    console.error('Error deleting new development:', error)
+    return false
+  }
+}
+
 export async function getNewDevelopmentById(id: string): Promise<NewDevelopment | null> {
   try {
-    const supabase = await createServerClient()
-    
+    const supabase = createClientClient()
     const { data, error } = await supabase
       .from('new_developments')
       .select('*')
@@ -81,13 +149,13 @@ export async function getNewDevelopmentById(id: string): Promise<NewDevelopment 
       .single()
 
     if (error) {
-      console.warn(`New development not found for ID: ${id}`)
+      console.error('Error fetching new development:', error)
       return null
     }
 
     return data
   } catch (error) {
-    console.error(`Error fetching new development with ID ${id}:`, error)
+    console.error('Error fetching new development:', error)
     return null
   }
 } 
