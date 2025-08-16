@@ -38,7 +38,7 @@ export function TeamSection() {
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-white text-4xl md:text-6xl font-bold tracking-wider mb-8">MEET THE TEAM</h2>
+            <h2 className="text-white text-4xl md:text-6xl font-bold tracking-wider mb-8">MEET DON ADAMS</h2>
             <div className="w-16 h-px bg-[#D4AF37] mx-auto"></div>
           </div>
           
@@ -63,7 +63,7 @@ export function TeamSection() {
     return (
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-white text-4xl md:text-6xl font-bold tracking-wider mb-8">MEET THE TEAM</h2>
+          <h2 className="text-white text-4xl md:text-6xl font-bold tracking-wider mb-8">MEET DON ADAMS</h2>
           <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8"></div>
           <div className="text-red-400 text-lg">{error}</div>
         </div>
@@ -76,7 +76,7 @@ export function TeamSection() {
     return (
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-white text-4xl md:text-6xl font-bold tracking-wider mb-8">MEET THE TEAM</h2>
+          <h2 className="text-white text-4xl md:text-6xl font-bold tracking-wider mb-8">MEET DON ADAMS</h2>
           <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8"></div>
           <div className="text-gray-400 text-lg">No team members available at the moment.</div>
         </div>

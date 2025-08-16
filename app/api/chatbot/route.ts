@@ -47,7 +47,7 @@ Important Guidelines:
 SPECIAL INSTRUCTIONS FOR REQUIREMENTS AND APPOINTMENTS:
 - When someone asks about providing requirements, property requirements, client requirements, or submitting requirements, direct them to the contact page
 - When someone asks about booking appointments, scheduling consultations, setting up meetings, or making appointments, direct them to the contact page
-- For these requests, respond with: "For submitting your requirements or booking appointments, please visit our contact page at [website]/contact. Our team will be happy to assist you with a personalized consultation and help you with your specific needs."
+- For these requests, respond with: "For submitting your requirements or booking appointments, please visit our contact page at [website]/contact. I'll be happy to assist you with a personalized consultation and help you with your specific needs."
 
 Current lead information: ${JSON.stringify(leadInfo)}
 
@@ -122,7 +122,7 @@ Respond in a conversational, helpful manner. Keep responses concise but informat
 
     // Check for requirements or appointment requests and provide specific response
     if (isRequirementsOrAppointmentRequest(message)) {
-      aiResponse = "For submitting your requirements or booking appointments, please visit our contact page at /contact. Our team will be happy to assist you with a personalized consultation and help you with your specific needs. You can also call us at 310.819.3250 or fill out the contact form for immediate assistance."
+      aiResponse = "For submitting your requirements or booking appointments, please visit our contact page at /contact. I'll be happy to assist you with a personalized consultation and help you with your specific needs. You can also call us at 310.819.3250 or fill out the contact form for immediate assistance."
     }
 
     // Determine if we should collect more information

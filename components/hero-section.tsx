@@ -26,7 +26,7 @@ export function HeroSection({ data }: HeroSectionProps) {
 
   const defaultData = {
     title: "DON ADAMS PRESENTS",
-    subtitle: "HOMES OF HOLLYWOOD",
+    subtitle: "LUXURY REAL ESTATE",
     description:
       "Experience unparalleled service in luxury real estate. From Beverly Hills to Malibu, we deliver exceptional results that exceed expectations.",
     image_url: "/placeholder.svg?height=800&width=1600&text=Luxury Real Estate Hero",

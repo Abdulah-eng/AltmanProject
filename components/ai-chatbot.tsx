@@ -152,7 +152,7 @@ export function AIChatbot() {
       console.error("Error sending message:", error)
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: "I apologize, but I'm experiencing a temporary connection issue. Please try again in a moment or contact our team directly for immediate assistance.",
+        content: "I apologize, but I'm experiencing a temporary connection issue. Please try again in a moment or contact me directly for immediate assistance.",
         sender: "bot",
         timestamp: new Date()
       }

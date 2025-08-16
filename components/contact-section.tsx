@@ -40,7 +40,7 @@ export function ContactSection() {
           </h2>
           <div className="w-20 h-1 bg-[#D4AF37] mx-auto mb-4"></div>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
-            Ready to start your luxury real estate journey? Our team of experts is here to guide you through every step.
+                          Ready to start your luxury real estate journey? I'm here to guide you through every step.
           </p>
         </div>
 

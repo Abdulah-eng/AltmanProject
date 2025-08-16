@@ -61,7 +61,7 @@ export function AboutSection() {
             <div className="w-16 h-1 bg-[#D4AF37] mb-8"></div>
 
             <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-              Homes of Hollywood is among the top producing real estate agencies in the country. Our team has
+              Homes of Hollywood is among the top producing real estate agencies in the country. We have
               managed to carve out a niche in the Los Angeles high end market.
             </p>
             <p className="text-gray-300 mb-6 leading-relaxed">

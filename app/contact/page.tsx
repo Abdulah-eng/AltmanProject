@@ -178,7 +178,7 @@ export default function ContactPage() {
               <Card className="bg-black/80 border border-gray-800 shadow-2xl">
                 <CardHeader>
                   <CardTitle className="text-2xl text-white">Get In Touch</CardTitle>
-                  <p className="text-gray-400">Submit your requirements or book an appointment with our team.</p>
+                  <p className="text-gray-400">Submit your requirements or book an appointment with me.</p>
                   
                   {/* Tab Navigation */}
                   <div className="flex space-x-1 bg-gray-900 p-1 rounded-lg mt-4">

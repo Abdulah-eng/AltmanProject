@@ -28,35 +28,15 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Office Locations */}
+            {/* Office Location */}
             <div>
               <div className="space-y-8">
                 <div>
                   <div className="flex items-start space-x-3 mb-4">
                     <MapPin className="w-5 h-5 text-[#D4AF37] mt-1" />
                     <div>
-                      <div className="font-semibold text-white mb-1">LOS ANGELES OFFICE</div>
-                      <div className="text-gray-300 text-sm">103 S ROBERTSON BLVD, LOS ANGELES, CA 90048</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex items-start space-x-3 mb-4">
-                    <MapPin className="w-5 h-5 text-[#D4AF37] mt-1" />
-                    <div>
-                      <div className="font-semibold text-white mb-1">ORANGE COUNTY FLAGSHIP OFFICE</div>
-                      <div className="text-gray-300 text-sm">3700 EAST COAST HWY, CORONA DEL MAR, CA 92625</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="w-5 h-5 text-[#D4AF37] mt-1" />
-                    <div>
-                      <div className="font-semibold text-white mb-1">ORANGE COUNTY OFFICE #2</div>
-                      <div className="text-gray-300 text-sm">3500 EAST COAST HWY, CORONA DEL MAR, CA 92625</div>
+                      <div className="font-semibold text-white mb-1">WEST HOLLYWOOD OFFICE</div>
+                      <div className="text-gray-300 text-sm">9000 W SUNSET BLVD #1100, WEST HOLLYWOOD, CA 90069</div>
                     </div>
                   </div>
                 </div>
@@ -68,10 +48,10 @@ export function Footer() {
               <div className="mb-8">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <div className="text-[#D4AF37] font-semibold mb-2">LA | SF | NYC</div>
-                    <div className="text-[#D4AF37] font-semibold mb-2">ASPEN | LAS VEGAS</div>
-                    <div className="text-[#D4AF37] font-semibold mb-2">ORANGE COUNTY</div>
-                    <div className="text-[#D4AF37] font-semibold">SAN DIEGO | ARIZONA*</div>
+                    <div className="text-[#D4AF37] font-semibold mb-2">LOS ANGELES</div>
+                    <div className="text-[#D4AF37] font-semibold mb-2">BEVERLY HILLS</div>
+                    <div className="text-[#D4AF37] font-semibold mb-2">WEST HOLLYWOOD</div>
+                    <div className="text-[#D4AF37] font-semibold">MALIBU</div>
                   </div>
                 </div>
               </div>

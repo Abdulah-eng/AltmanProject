@@ -21,17 +21,19 @@ export interface Property {
 }
 
 /**
- * Fetch all featured properties for the carousel
+ * Fetch featured properties for home page
  */
-export async function getFeaturedProperties(): Promise<Property[]> {
+export async function getFeaturedProperties(limit: number = 6): Promise<Property[]> {
   try {
-    const supabase = createClientClient()
+    const supabase = await createClientClient()
     
     const { data, error } = await supabase
       .from('properties')
       .select('*')
       .eq('featured', true)
+      .eq('status', 'for_sale')
       .order('created_at', { ascending: false })
+      .limit(limit)
 
     if (error) {
       console.warn('Failed to fetch featured properties:', error)

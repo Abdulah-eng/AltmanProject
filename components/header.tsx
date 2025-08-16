@@ -14,15 +14,11 @@ export function Header() {
     { label: "MATTHEW ALTMAN", href: "/about/matthew-altman" },
     { label: "HEATHER ALTMAN", href: "/about/heather-altman" },
     { label: "JACOB GREENE", href: "/about/jacob-greene" },
-    { label: "OUR TEAM", href: "/about/team" },
-    { label: "OUR OFFICES", href: "/about/offices" },
   ]
 
   const propertiesDropdownItems = [
     { label: "ALL LISTINGS", href: "/listings" },
     { label: "LOS ANGELES LISTINGS", href: "/listings/los-angeles" },
-    { label: "ORANGE COUNTY LISTINGS", href: "/listings/orange-county" },
-    { label: "SAN DIEGO LISTINGS", href: "/listings/san-diego" },
     { label: "DEVELOPMENTS", href: "/listings/developments" },
     { label: "PROPERTY MARKETING", href: "/services/property-marketing" },
     { label: "PARTNERSHIPS", href: "/services/partnerships" },
