@@ -79,12 +79,11 @@ export function HeroSection({ data }: HeroSectionProps) {
           src={getImageUrl()}
           alt={getImageAlt()}
           fill
-          className="object-cover opacity-60"
+          className="object-cover"
           priority
           onError={handleImageError}
           unoptimized={imageError} // Use unoptimized for fallback images
         />
-        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">

@@ -93,7 +93,6 @@ export default function BookAppointmentPage() {
       <main>
         {/* Hero Section */}
         <section className="py-20 bg-black text-white relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
           <div className="container mx-auto px-4 text-center relative z-10">
             <div className="text-[#D4AF37] text-lg md:text-xl font-light tracking-[0.2em] mb-4">
               SCHEDULE YOUR CONSULTATION
