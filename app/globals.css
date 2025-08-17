@@ -56,6 +56,31 @@
   body {
     @apply bg-black text-white;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure proper container behavior */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 100%;
+  }
+  
+  /* Responsive text utilities */
+  .text-responsive {
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
+  }
+  
+  .heading-responsive {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+  
+  /* Mobile-first spacing */
+  .section-padding {
+    @apply py-8 sm:py-12 md:py-16 lg:py-20;
+  }
+  
+  .section-margin {
+    @apply my-8 sm:my-12 md:my-16 lg:my-20;
   }
 }
 
@@ -104,29 +129,6 @@
   }
 }
 
-@keyframes slideInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes countUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Luxury loading screen specific animations */
 @keyframes shimmer {
   0% {
     background-position: -200px 0;
@@ -417,4 +419,52 @@
   bottom: 0;
   background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
   animation: shimmer 3s infinite;
+}
+
+/* Hero section specific styles */
+.heading-primary {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.text-body {
+  font-weight: 400;
+}
+
+.gold-accent-line {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, #D4AF37, #B8941F);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 640px) {
+  .heading-primary {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+  
+  .gold-accent-line {
+    width: 60px;
+    height: 1px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .heading-primary {
+    font-size: clamp(4rem, 10vw, 6rem);
+  }
+}
+
+@media (min-width: 1025px) {
+  .heading-primary {
+    font-size: clamp(6rem, 12vw, 9rem);
+  }
 }

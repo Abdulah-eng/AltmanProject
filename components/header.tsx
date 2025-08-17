@@ -40,7 +40,7 @@ export function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="w-16 h-16 relative">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 relative">
                 <Image
                   src="/logo.png.png"
                   alt="Homes of Hollywood Logo"
@@ -186,19 +186,19 @@ export function Header() {
 
       {/* Overlay Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex">
-          <div className="w-full max-w-4xl mx-auto flex">
+        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex overflow-y-auto">
+          <div className="w-full max-w-4xl mx-auto flex flex-col lg:flex-row">
             {/* Close Button */}
             <button
-              className="absolute top-8 right-8 text-white hover:text-[#D4AF37] z-60"
+              className="absolute top-4 sm:top-8 right-4 sm:right-8 text-white hover:text-[#D4AF37] z-60"
               onClick={() => setIsMenuOpen(false)}
             >
-              <X className="w-8 h-8" />
+              <X className="w-6 h-6 sm:w-8 sm:h-8" />
             </button>
 
             {/* Logo in Menu */}
-            <div className="absolute top-8 left-8">
-              <div className="w-14 h-14 relative">
+            <div className="absolute top-4 sm:top-8 left-4 sm:left-8">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 relative">
                 <Image
                   src="/logo.png.png"
                   alt="Homes of Hollywood Logo"
@@ -209,100 +209,66 @@ export function Header() {
             </div>
 
             {/* Menu Content */}
-            <div className="flex w-full pt-32">
-              {/* About Section */}
-              <div className="flex-1 px-8">
-                <h3 className="text-[#D4AF37] text-xl font-bold mb-8 tracking-wider">ABOUT</h3>
-                <div className="space-y-4">
-                  {aboutDropdownItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Properties Section */}
-              <div className="flex-1 px-8">
-                <h3 className="text-[#D4AF37] text-xl font-bold mb-8 tracking-wider">PROPERTIES</h3>
-                <div className="space-y-4">
-                  {propertiesDropdownItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Training Section */}
-              <div className="flex-1 px-8">
-                <h3 className="text-[#D4AF37] text-xl font-bold mb-8 tracking-wider">TRAINING</h3>
-                <div className="space-y-4">
-                  {trainingDropdownItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Contact Section */}
-              <div className="flex-1 px-8">
-                <h3 className="text-[#D4AF37] text-xl font-bold mb-8 tracking-wider">CONTACT</h3>
-                <div className="space-y-4">
+            <div className="flex flex-col lg:flex-row w-full pt-24 sm:pt-32">
+              {/* Main Navigation Items */}
+              <div className="flex-1 px-4 sm:px-8">
+                <div className="space-y-6 sm:space-y-8">
                   <Link
-                    href="/contact"
-                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    href="/about"
+                    className="block text-[#D4AF37] text-xl sm:text-2xl font-bold tracking-wider hover:text-white transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    GET IN TOUCH
+                    ABOUT
                   </Link>
+                  
                   <Link
-                    href="/contact"
-                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    href="/listings"
+                    className="block text-[#D4AF37] text-xl sm:text-2xl font-bold tracking-wider hover:text-white transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    BOOK APPOINTMENT
+                    PROPERTIES
                   </Link>
+                  
+                  <Link
+                    href="/training"
+                    className="block text-[#D4AF37] text-xl sm:text-2xl font-bold tracking-wider hover:text-white transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    TRAINING
+                  </Link>
+                  
+                  <Link
+                    href="/contact"
+                    className="block text-[#D4AF37] text-xl sm:text-2xl font-bold tracking-wider hover:text-white transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    CONTACT
+                  </Link>
+                  
                   <Link
                     href="/mls-listings"
-                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    className="block text-[#D4AF37] text-xl sm:text-2xl font-bold tracking-wider hover:text-white transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     MLS LISTINGS
                   </Link>
+                  
                   <Link
                     href="/new-developments"
-                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    className="block text-[#D4AF37] text-xl sm:text-2xl font-bold tracking-wider hover:text-white transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     NEW DEVELOPMENTS
                   </Link>
+                  
                   <Link
                     href="/real-estate-insights"
-                    className="block text-white hover:text-[#D4AF37] transition-colors text-sm tracking-wide"
+                    className="block text-[#D4AF37] text-xl sm:text-2xl font-bold tracking-wider hover:text-white transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     REAL ESTATE INSIGHTS
                   </Link>
                 </div>
-
-
               </div>
             </div>
           </div>

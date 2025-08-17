@@ -9,34 +9,34 @@ export function Footer() {
       </div>
 
       <div className="relative z-10">
-        <div className="container mx-auto px-4 py-16">
-          <div className="grid lg:grid-cols-3 gap-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {/* Company Info */}
-            <div>
-              <div className="text-3xl font-bold text-[#D4AF37] tracking-wider mb-8">HOMES OF HOLLYWOOD</div>
+            <div className="text-center md:text-left">
+              <div className="text-2xl sm:text-3xl font-bold text-[#D4AF37] tracking-wider mb-6 sm:mb-8">HOMES OF HOLLYWOOD</div>
 
-              <div className="space-y-6">
-                <div className="flex items-center space-x-3">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex items-center justify-center md:justify-start space-x-3">
                   <Phone className="w-5 h-5 text-[#D4AF37]" />
-                  <span className="text-lg font-semibold">310.819.3250</span>
+                  <span className="text-base sm:text-lg font-semibold">310.819.3250</span>
                 </div>
 
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center justify-center md:justify-start space-x-3">
                   <Mail className="w-5 h-5 text-[#D4AF37]" />
-                  <span>INFO@HOMESOFHOLLYWOOD.COM</span>
+                  <span className="text-sm sm:text-base">INFO@HOMESOFHOLLYWOOD.COM</span>
                 </div>
               </div>
             </div>
 
             {/* Office Location */}
-            <div>
-              <div className="space-y-8">
+            <div className="text-center md:text-left">
+              <div className="space-y-6 sm:space-y-8">
                 <div>
-                  <div className="flex items-start space-x-3 mb-4">
-                    <MapPin className="w-5 h-5 text-[#D4AF37] mt-1" />
+                  <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-3 mb-4">
+                    <MapPin className="w-5 h-5 text-[#D4AF37] md:mt-1" />
                     <div>
-                      <div className="font-semibold text-white mb-1">WEST HOLLYWOOD OFFICE</div>
-                      <div className="text-gray-300 text-sm">9000 W SUNSET BLVD #1100, WEST HOLLYWOOD, CA 90069</div>
+                      <div className="font-semibold text-white mb-1 text-sm sm:text-base">WEST HOLLYWOOD OFFICE</div>
+                      <div className="text-gray-300 text-xs sm:text-sm">9000 W SUNSET BLVD #1100, WEST HOLLYWOOD, CA 90069</div>
                     </div>
                   </div>
                 </div>
@@ -44,32 +44,23 @@ export function Footer() {
             </div>
 
             {/* Service Areas & Partners */}
-            <div>
-              <div className="mb-8">
-                <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="text-center md:text-left">
+              <div className="mb-6 sm:mb-8">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 text-sm">
                   <div>
-                    <div className="text-[#D4AF37] font-semibold mb-2">LOS ANGELES</div>
-                    <div className="text-[#D4AF37] font-semibold mb-2">BEVERLY HILLS</div>
-                    <div className="text-[#D4AF37] font-semibold mb-2">WEST HOLLYWOOD</div>
-                    <div className="text-[#D4AF37] font-semibold">MALIBU</div>
+                    <div className="text-[#D4AF37] font-semibold mb-2 text-sm">LOS ANGELES</div>
+                    <div className="text-[#D4AF37] font-semibold mb-2 text-sm">BEVERLY HILLS</div>
+                    <div className="text-[#D4AF37] font-semibold mb-2 text-sm">WEST HOLLYWOOD</div>
+                    <div className="text-[#D4AF37] font-semibold text-sm">MALIBU</div>
                   </div>
                 </div>
               </div>
 
               {/* Partner Logos */}
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="text-[#D4AF37] font-bold text-lg">Douglas Elliman</div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="bg-[#D4AF37] text-black px-3 py-1 text-sm font-bold">bravo</div>
-                </div>
+              <div className="space-y-4 sm:space-y-6">
                 <div className="text-[#D4AF37] text-sm font-semibold">
-                  MILLION DOLLAR
-                  <br />
-                  LISTING LOS ANGELES
+                  matterport
                 </div>
-                <div className="text-[#D4AF37] text-sm font-semibold">matterport</div>
               </div>
             </div>
           </div>
@@ -77,7 +68,7 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800">
-          <div className="container mx-auto px-4 py-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
             <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
               <div className="flex items-center space-x-4">
                 <div className="text-white text-sm">CUSTOM WEBSITE DESIGN BY</div>

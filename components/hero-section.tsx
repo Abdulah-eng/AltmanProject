@@ -86,22 +86,22 @@ export function HeroSection({ data }: HeroSectionProps) {
         />
       </div>
 
-      <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
-        <div className={`mb-8 ${isLoaded ? "animate-fade-in-up" : "opacity-0"}`}>
-          <div className="text-[#D4AF37] text-lg md:text-xl font-light tracking-[0.2em] mb-4 animate-stagger-1">
+      <div className="relative z-10 text-center text-white max-w-4xl sm:max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`mb-6 sm:mb-8 ${isLoaded ? "animate-fade-in-up" : "opacity-0"}`}>
+          <div className="text-[#D4AF37] text-base sm:text-lg md:text-xl font-light tracking-[0.2em] mb-3 sm:mb-4 animate-stagger-1">
             {heroData.title}
           </div>
-          <h1 className="heading-primary text-5xl md:text-8xl lg:text-9xl text-white mb-6 leading-tight animate-stagger-2">
+          <h1 className="heading-primary text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl text-white mb-4 sm:mb-6 leading-tight animate-stagger-2">
             {heroData.subtitle}
           </h1>
-          <div className="text-[#D4AF37] text-xl md:text-3xl font-semibold tracking-wide mb-6 animate-stagger-3">
+          <div className="text-[#D4AF37] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold tracking-wide mb-4 sm:mb-6 animate-stagger-3">
             Get Smart with Real Estate
           </div>
-          <div className="gold-accent-line mx-auto mb-8 animate-stagger-4" />
+          <div className="gold-accent-line mx-auto mb-6 sm:mb-8 animate-stagger-4" />
         </div>
 
         <p
-          className={`text-lg md:text-xl mb-12 max-w-3xl mx-auto text-gray-200 leading-relaxed text-body ${
+          className={`text-base sm:text-lg md:text-xl mb-8 sm:mb-12 max-w-2xl sm:max-w-3xl mx-auto text-gray-200 leading-relaxed text-body px-4 ${
             isLoaded ? "animate-fade-in-up animate-stagger-5" : "opacity-0"
           }`}
         >
@@ -109,14 +109,14 @@ export function HeroSection({ data }: HeroSectionProps) {
         </p>
 
         <div
-          className={`flex flex-col sm:flex-row gap-6 justify-center ${
+          className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center ${
             isLoaded ? "animate-fade-in-up animate-stagger-5" : "opacity-0"
           }`}
         >
           <Button
             size="lg"
             asChild
-            className="bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold px-8 py-4 text-lg tracking-wide hover-scale"
+            className="bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg tracking-wide hover-scale"
           >
             <Link href={heroData.cta_link}>{heroData.cta_text}</Link>
           </Button>
@@ -124,7 +124,7 @@ export function HeroSection({ data }: HeroSectionProps) {
             size="lg"
             variant="outline"
             asChild
-            className="border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black bg-transparent font-semibold px-8 py-4 text-lg tracking-wide hover-scale"
+            className="border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black bg-transparent font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg tracking-wide hover-scale"
           >
             <Link href="/book-appointment">SCHEDULE CONSULTATION</Link>
           </Button>

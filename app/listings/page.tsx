@@ -85,7 +85,7 @@ export default function ListingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black overflow-x-hidden">
       <Header />
 
       {/* Hero Section */}
@@ -102,7 +102,7 @@ export default function ListingsPage() {
         </div>
 
         {/* Breadcrumb */}
-        <div className="absolute top-32 left-8 z-10 text-white text-sm tracking-wide">
+        <div className="absolute top-20 sm:top-32 left-4 sm:left-8 z-10 text-white text-sm tracking-wide">
           <Link href="/" className="hover:text-[#D4AF37]">
             HOME
           </Link>
@@ -113,24 +113,24 @@ export default function ListingsPage() {
         {/* Main Content */}
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
           <div className="mb-8">
-            <div className="text-[#D4AF37] text-lg tracking-[0.3em] mb-4">LUXURY REAL ESTATE</div>
-            <h1 className="text-6xl md:text-8xl font-bold tracking-wider mb-8">
-              <span className="border-l-4 border-[#D4AF37] pl-8">LISTINGS</span>
+            <div className="text-[#D4AF37] text-base sm:text-lg tracking-[0.3em] mb-4">LUXURY REAL ESTATE</div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-wider mb-8">
+              <span className="border-l-4 border-[#D4AF37] pl-4 sm:pl-8">LISTINGS</span>
             </h1>
           </div>
         </div>
 
         {/* Search Bar */}
-        <div className="absolute bottom-20 left-8 z-10">
-          <div className="flex items-center space-x-4">
-            <div className="text-white text-lg tracking-[0.2em]">SEARCH LISTINGS</div>
-            <div className="w-8 h-0.5 bg-[#D4AF37]"></div>
-            <Search className="w-6 h-6 text-[#D4AF37]" />
+        <div className="absolute bottom-16 sm:bottom-20 left-4 sm:left-8 z-10">
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <div className="text-white text-sm sm:text-lg tracking-[0.2em]">SEARCH LISTINGS</div>
+            <div className="w-6 sm:w-8 h-0.5 bg-[#D4AF37]"></div>
+            <Search className="w-5 h-5 sm:w-6 sm:h-6 text-[#D4AF37]" />
           </div>
         </div>
 
-        {/* Side Navigation */}
-        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-20">
+        {/* Side Navigation - Hidden on mobile, visible on desktop */}
+        <div className="hidden md:block fixed right-0 top-1/2 -translate-y-1/2 z-20">
           <div className="flex flex-col space-y-4">
             <div className="bg-[#D4AF37] text-black px-4 py-8 text-sm font-bold tracking-[0.2em] writing-mode-vertical">
               FOR SALE
@@ -143,19 +143,19 @@ export default function ListingsPage() {
       </section>
 
       {/* Filters Section */}
-      <section className="py-12 bg-gray-900">
-        <div className="container mx-auto px-4">
+      <section className="py-8 sm:py-12 bg-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <div className="flex items-center space-x-6">
-              <div className="text-white text-sm tracking-wide">
+            <div className="flex items-center space-y-2 sm:space-y-0 sm:space-x-6 flex-col sm:flex-row">
+              <div className="text-white text-sm tracking-wide text-center sm:text-left">
                 SHOWING <span className="text-[#D4AF37] font-bold">{filteredProperties.length}</span> PROPERTIES
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
               <div className="text-white text-sm tracking-wide">SORT BY:</div>
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-48 bg-black border-gray-700 text-white">
+                <SelectTrigger className="w-full sm:w-48 bg-black border-gray-700 text-white">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-black border-gray-700">
@@ -176,7 +176,7 @@ export default function ListingsPage() {
 
               <Button
                 variant="outline"
-                className="bg-transparent border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black"
+                className="bg-transparent border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black w-full sm:w-auto"
               >
                 <SlidersHorizontal className="w-4 h-4 mr-2" />
                 FILTERS
@@ -187,17 +187,17 @@ export default function ListingsPage() {
       </section>
 
       {/* Properties Grid */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-20 bg-black">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {filteredProperties.length === 0 ? (
             <div className="text-center py-20">
-              <div className="text-white text-2xl mb-4">No properties found</div>
-              <div className="text-gray-400 text-lg">
+              <div className="text-white text-xl sm:text-2xl mb-4">No properties found</div>
+              <div className="text-gray-400 text-base sm:text-lg">
                 Check back soon for new luxury properties
               </div>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredProperties.map((property) => (
                 <Card
                   key={property.id}
@@ -209,7 +209,7 @@ export default function ListingsPage() {
                       alt={property.title}
                       width={400}
                       height={300}
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-48 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300" />
 
@@ -241,19 +241,19 @@ export default function ListingsPage() {
                     </Button>
 
                     {/* Property Details Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <div className="text-2xl font-bold text-[#D4AF37] mb-2">{formatPrice(property.price)}</div>
-                      <h3 className="text-lg font-semibold mb-2 group-hover:text-[#D4AF37] transition-colors">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
+                      <div className="text-xl sm:text-2xl font-bold text-[#D4AF37] mb-2">{formatPrice(property.price)}</div>
+                      <h3 className="text-base sm:text-lg font-semibold mb-2 group-hover:text-[#D4AF37] transition-colors">
                         {property.title}
                       </h3>
                       <div className="flex items-center text-gray-300 mb-4">
                         <MapPin className="w-4 h-4 mr-1" />
-                        <span className="text-sm">{property.address}</span>
+                        <span className="text-xs sm:text-sm">{property.address}</span>
                       </div>
                     </div>
                   </div>
 
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
                       <div className="flex items-center">
                         <Bed className="w-4 h-4 mr-1" />
