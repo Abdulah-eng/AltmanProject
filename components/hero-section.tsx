@@ -94,8 +94,10 @@ export function HeroSection({ data }: HeroSectionProps) {
           <h1 className="heading-primary text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl text-white mb-4 sm:mb-6 leading-tight animate-stagger-2">
             {heroData.subtitle}
           </h1>
-          <div className="text-[#D4AF37] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold tracking-wide mb-4 sm:mb-6 animate-stagger-3">
-            Get Smart with Real Estate
+          <div className="bg-black/60 backdrop-blur-sm rounded-lg px-6 py-4 mb-4 sm:mb-6 animate-stagger-3">
+            <div className="text-[#D4AF37] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold tracking-wide">
+              Get Smart with Real Estate
+            </div>
           </div>
           <div className="gold-accent-line mx-auto mb-6 sm:mb-8 animate-stagger-4" />
         </div>
@@ -124,7 +126,7 @@ export function HeroSection({ data }: HeroSectionProps) {
             size="lg"
             variant="outline"
             asChild
-            className="border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black bg-transparent font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg tracking-wide hover-scale"
+            className="border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black bg-black/60 backdrop-blur-sm font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg tracking-wide hover-scale"
           >
             <Link href="/book-appointment">SCHEDULE CONSULTATION</Link>
           </Button>

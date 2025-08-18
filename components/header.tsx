@@ -29,9 +29,7 @@ export function Header() {
     { label: "SELLERS", href: "/services/sellers" },
   ]
 
-  const trainingDropdownItems = [
-    { label: "TRAINING", href: "/training" },
-  ]
+
 
   return (
     <>
@@ -108,33 +106,7 @@ export function Header() {
                 )}
               </div>
 
-              {/* Training Dropdown */}
-              <div
-                className="relative group"
-                onMouseEnter={() => setActiveDropdown("training")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link
-                  href="/training"
-                  className="flex items-center text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
-                >
-                  TRAINING
-                  <ChevronDown className="w-4 h-4 ml-1" />
-                </Link>
-                {activeDropdown === "training" && (
-                  <div className="absolute top-full left-0 w-64 bg-black border-l-4 border-[#D4AF37] shadow-lg z-50">
-                    {trainingDropdownItems.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="block px-6 py-3 text-white hover:text-[#D4AF37] hover:bg-gray-900 transition-colors text-sm tracking-wide border-b border-gray-800 last:border-b-0"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+
 
               <Link
                 href="/contact"
@@ -229,13 +201,7 @@ export function Header() {
                     PROPERTIES
                   </Link>
                   
-                  <Link
-                    href="/training"
-                    className="block text-[#D4AF37] text-xl sm:text-2xl font-bold tracking-wider hover:text-white transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    TRAINING
-                  </Link>
+
                   
                   <Link
                     href="/contact"
