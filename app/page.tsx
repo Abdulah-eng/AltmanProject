@@ -47,14 +47,8 @@ export default async function HomePage() {
       .order("created_at", { ascending: false })
     testimonials = testimonialsResult.data
 
-    // Fetch featured neighborhoods
-    const neighborhoodsResult = await supabase
-      .from("neighborhoods")
-      .select("*")
-      .eq("featured", true)
-      .order("display_order", { ascending: true })
-      .order("created_at", { ascending: false })
-    neighborhoods = neighborhoodsResult.data
+    // Neighborhoods now handled by IDX widget
+    neighborhoods = null
 
     // Fetch featured new developments
     const newDevelopmentsResult = await supabase
@@ -65,18 +59,8 @@ export default async function HomePage() {
       .order("created_at", { ascending: false })
     newDevelopments = newDevelopmentsResult.data
 
-    // Fetch featured properties
-    const propertiesResult = await supabase
-      .from("properties")
-      .select("*")
-      .eq("featured", true)
-      .order("created_at", { ascending: false })
-      .limit(6)
-    properties = propertiesResult.data
-    
-    // Debug: Log properties query results
-    console.log('Properties query result:', propertiesResult)
-    console.log('Properties data:', properties)
+    // Properties now handled by IDX widget
+    properties = null
 
     // Fetch featured insights
     const insightsResult = await supabase
