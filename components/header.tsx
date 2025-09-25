@@ -116,10 +116,10 @@ export function Header() {
               </Link>
 
               <Link
-                href="/mls-listings"
+                href="/idx"
                 className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
               >
-                MLS LISTINGS
+                MLS SEARCH
               </Link>
 
               <Link
@@ -212,11 +212,11 @@ export function Header() {
                   </Link>
                   
                   <Link
-                    href="/mls-listings"
+                    href="/idx"
                     className="block text-[#D4AF37] text-xl sm:text-2xl font-bold tracking-wider hover:text-white transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    MLS LISTINGS
+                    MLS SEARCH
                   </Link>
                   
                   <Link
