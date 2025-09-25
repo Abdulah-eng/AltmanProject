@@ -33,8 +33,8 @@ export default function IDXPage() {
     <div className="min-h-screen">
       <Header />
       <main className="bg-black text-white">
-        <div className="container mx-auto px-4 py-8">
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-wide mb-6">MLS Search</h1>
+        <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide mb-4 sm:mb-6 text-center sm:text-left">MLS Search</h1>
 
           {/* Load the IDX widget script non-blocking */}
           <Script
@@ -42,13 +42,20 @@ export default function IDXPage() {
             strategy="afterInteractive"
           />
 
-          <div className="w-full">
+          <div className="w-full overflow-hidden">
             <iframe
               ref={iframeRef}
               id="idxFrame"
-              style={{ padding: 0, margin: 0, border: "0px solid transparent", backgroundColor: "transparent" }}
+              style={{ 
+                padding: 0, 
+                margin: 0, 
+                border: "0px solid transparent", 
+                backgroundColor: "transparent",
+                width: "100%",
+                minHeight: "600px"
+              }}
               frameBorder="0"
-              scrolling="no"
+              scrolling="auto"
               src="https://www.themls.com/IDXNET/Default.aspx?wid=2HIXcRDKgSk4aOwjkP4O%2fZCt5J4ydMgyNbBLdRbZy7JB4CIBf352FgEQLEQL"
               width="100%"
               height={iframeHeight}
