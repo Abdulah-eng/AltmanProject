@@ -42,24 +42,37 @@ export default function IDXPage() {
             strategy="afterInteractive"
           />
 
-          <div className="w-full overflow-hidden">
-            <iframe
-              ref={iframeRef}
-              id="idxFrame"
-              style={{ 
-                padding: 0, 
-                margin: 0, 
-                border: "0px solid transparent", 
-                backgroundColor: "transparent",
-                width: "100%",
-                minHeight: "600px"
+          <div className="w-full overflow-hidden relative">
+            <div 
+              className="w-full"
+              style={{
+                touchAction: "pan-x pan-y pinch-zoom",
+                WebkitOverflowScrolling: "touch"
               }}
-              frameBorder="0"
-              scrolling="auto"
-              src="https://www.themls.com/IDXNET/Default.aspx?wid=2HIXcRDKgSk4aOwjkP4O%2fZCt5J4ydMgyNbBLdRbZy7JB4CIBf352FgEQLEQL"
-              width="100%"
-              height={iframeHeight}
-            />
+            >
+              <iframe
+                ref={iframeRef}
+                id="idxFrame"
+                style={{ 
+                  padding: 0, 
+                  margin: 0, 
+                  border: "0px solid transparent", 
+                  backgroundColor: "transparent",
+                  width: "100%",
+                  minHeight: "600px",
+                  touchAction: "manipulation",
+                  pointerEvents: "auto",
+                  display: "block"
+                }}
+                frameBorder="0"
+                scrolling="auto"
+                allow="geolocation; microphone; camera"
+                sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+                src="https://www.themls.com/IDXNET/Default.aspx?wid=2HIXcRDKgSk4aOwjkP4O%2fZCt5J4ydMgyNbBLdRbZy7JB4CIBf352FgEQLEQL"
+                width="100%"
+                height={iframeHeight}
+              />
+            </div>
           </div>
         </div>
       </main>
