@@ -50,14 +50,8 @@ export default async function HomePage() {
     // Neighborhoods now handled by IDX widget
     neighborhoods = null
 
-    // Fetch featured new developments
-    const newDevelopmentsResult = await supabase
-      .from("new_developments")
-      .select("*")
-      .eq("featured", true)
-      .order("display_order", { ascending: true })
-      .order("created_at", { ascending: false })
-    newDevelopments = newDevelopmentsResult.data
+    // New developments now handled by static content
+    newDevelopments = null
 
     // Properties now handled by IDX widget
     properties = null
