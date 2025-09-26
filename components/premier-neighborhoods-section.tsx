@@ -107,7 +107,7 @@ export function PremierNeighborhoodsSection({ neighborhoods }: PremierNeighborho
                     </div>
                     
                     <Button asChild className="w-full bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold">
-                      <Link href="/listings/los-angeles">View Properties</Link>
+                      <Link href={`/neighborhoods/${neighborhood.name.toLowerCase().replace(/\s+/g, '-')}`}>View Properties</Link>
                     </Button>
                   </div>
                 </CardContent>

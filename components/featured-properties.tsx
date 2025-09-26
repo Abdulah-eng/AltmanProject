@@ -114,8 +114,11 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
                 <div className="relative h-48 sm:h-64 overflow-hidden">
                   <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
                     <div className="text-center text-white">
-                      <Search className="w-12 h-12 mx-auto mb-2 text-[#D4AF37]" />
-                      <p className="text-sm text-gray-300">Property Image</p>
+                      <div className="w-16 h-16 bg-gray-600 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <Square className="w-8 h-8 text-[#D4AF37]" />
+                      </div>
+                      <p className="text-sm text-gray-300 font-medium">Luxury Property</p>
+                      <p className="text-xs text-gray-400 mt-1">{property.title}</p>
                     </div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -163,7 +166,7 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
                   <p className="text-gray-300 text-sm mb-4 line-clamp-2">{property.description}</p>
                   
                   <Button asChild className="w-full bg-[#D4AF37] hover:bg-[#B8941F] text-black text-sm sm:text-base">
-                    <Link href="/idx">VIEW DETAILS</Link>
+                    <Link href={`/properties/${property.id}`}>VIEW DETAILS</Link>
                   </Button>
                 </div>
               </CardContent>
