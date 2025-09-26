@@ -150,7 +150,7 @@ export function NewDevelopmentsSection({ developments }: NewDevelopmentsSectionP
               <Link href="/new-developments">VIEW ALL DEVELOPMENTS</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black px-8 py-4">
-              <Link href="/idx">SEARCH NEW CONSTRUCTION</Link>
+              <Link href="/idx">SEARCH NEW CONSTRUCTION PROPERTIES</Link>
             </Button>
           </div>
         </div>

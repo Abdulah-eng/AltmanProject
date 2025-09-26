@@ -118,10 +118,10 @@ export function PremierNeighborhoodsSection({ neighborhoods }: PremierNeighborho
           {/* Call to Action */}
           <div className="text-center">
             <Button asChild size="lg" className="bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold px-8 py-4 mr-4">
-              <Link href="/idx">SEARCH ALL NEIGHBORHOODS</Link>
+              <Link href="/idx">SEARCH PROPERTIES BY NEIGHBORHOOD</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black px-8 py-4">
-              <Link href="/listings">VIEW ALL PROPERTIES</Link>
+              <Link href="/listings">VIEW ALL LISTINGS</Link>
             </Button>
           </div>
         </div>
