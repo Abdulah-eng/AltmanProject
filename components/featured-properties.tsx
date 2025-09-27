@@ -1,16 +1,19 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, Bed, Bath, Square, Heart, Search } from "lucide-react"
 import Link from "next/link"
+import { IDXWidget } from "@/components/idx-widget"
 
 interface FeaturedPropertiesProps {
   properties?: any[] | null
 }
 
 export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
+  // Use static featured properties since we can't fetch from iframe
   const featuredProperties = [
     {
       id: "1",
@@ -166,7 +169,7 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
                   <p className="text-gray-300 text-sm mb-4 line-clamp-2">{property.description}</p>
                   
                   <Button asChild className="w-full bg-[#D4AF37] hover:bg-[#B8941F] text-black text-sm sm:text-base">
-                    <Link href={`/properties/${property.id}`}>VIEW DETAILS</Link>
+                    <Link href="/idx">SEARCH SIMILAR PROPERTIES</Link>
                   </Button>
                 </div>
               </CardContent>

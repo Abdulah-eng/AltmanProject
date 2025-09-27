@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -7,8 +8,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, Bed, Bath, Square, Star, Users, TrendingUp, Shield, Calendar } from "lucide-react"
 import Link from "next/link"
+import { IDXWidget } from "@/components/idx-widget"
 
 export default function BeverlyHillsPage() {
+
   const neighborhoodInfo = {
     name: "Beverly Hills",
     description: "Beverly Hills is one of the most prestigious and recognizable neighborhoods in the world, known for its luxury shopping, fine dining, and celebrity residents. This iconic city offers unparalleled luxury living with world-class amenities and a sophisticated lifestyle.",
@@ -36,41 +39,6 @@ export default function BeverlyHillsPage() {
     ]
   }
 
-  const featuredProperties = [
-    {
-      id: "1",
-      title: "Beverly Hills Estate",
-      price: 12500000,
-      address: "123 Beverly Hills Dr, Beverly Hills, CA 90210",
-      bedrooms: 6,
-      bathrooms: 8,
-      square_feet: 8500,
-      status: "FOR SALE",
-      image: "/api/placeholder/400/300"
-    },
-    {
-      id: "2",
-      title: "Rodeo Drive Penthouse",
-      price: 8500000,
-      address: "456 Rodeo Dr, Beverly Hills, CA 90210",
-      bedrooms: 4,
-      bathrooms: 5,
-      square_feet: 4200,
-      status: "FOR SALE",
-      image: "/api/placeholder/400/300"
-    },
-    {
-      id: "3",
-      title: "Beverly Hills Villa",
-      price: 15000000,
-      address: "789 Beverly Dr, Beverly Hills, CA 90210",
-      bedrooms: 7,
-      bathrooms: 9,
-      square_feet: 9200,
-      status: "FOR SALE",
-      image: "/api/placeholder/400/300"
-    }
-  ]
 
   const formatPrice = (price: number) => {
     if (price >= 1000000) {
@@ -171,68 +139,26 @@ export default function BeverlyHillsPage() {
           </div>
         </section>
 
-        {/* Featured Properties */}
+        {/* Property Search */}
         <section className="py-16 bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-white text-center mb-12">Featured Properties in {neighborhoodInfo.name}</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {featuredProperties.map((property) => (
-                  <Card key={property.id} className="bg-gray-800 border-gray-700 shadow-2xl hover:shadow-[#D4AF37]/20 transition-all duration-300 group">
-                    <CardContent className="p-0 overflow-hidden">
-                      <div className="w-full h-48 bg-gradient-to-br from-gray-700 to-gray-900 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 to-transparent"></div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center text-white">
-                            <Square className="w-12 h-12 mx-auto mb-2 text-[#D4AF37]" />
-                            <p className="text-sm text-gray-300">Property Image</p>
-                          </div>
-                        </div>
-                        <Badge className="absolute top-4 left-4 bg-[#D4AF37] text-black font-bold px-3 py-1">
-                          {property.status}
-                        </Badge>
-                        <div className="absolute top-4 right-4 bg-black/80 text-white px-3 py-2 rounded-lg">
-                          <span className="text-[#D4AF37] font-bold">{formatPrice(property.price)}</span>
-                        </div>
-                      </div>
-                      
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#D4AF37] transition-colors">
-                          {property.title}
-                        </h3>
-                        <div className="flex items-center text-gray-400 mb-4">
-                          <MapPin className="w-4 h-4 mr-2" />
-                          <span className="text-sm">{property.address}</span>
-                        </div>
-                        
-                        <div className="flex items-center justify-between text-sm text-gray-400 mb-6">
-                          <div className="flex items-center">
-                            <Bed className="w-4 h-4 mr-1" />
-                            <span>{property.bedrooms}</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Bath className="w-4 h-4 mr-1" />
-                            <span>{property.bathrooms}</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Square className="w-4 h-4 mr-1" />
-                            <span>{property.square_feet.toLocaleString()}</span>
-                          </div>
-                        </div>
-                        
-                        <Button asChild className="w-full bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold">
-                          <Link href={`/properties/${property.id}`}>View Details</Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              <h2 className="text-3xl font-bold text-white text-center mb-12">Search Properties in {neighborhoodInfo.name}</h2>
+              <p className="text-gray-300 text-center mb-8 max-w-3xl mx-auto">
+                Use our MLS search to find the perfect property in {neighborhoodInfo.name}. Search by price, bedrooms, property type, and more.
+              </p>
               
-              <div className="text-center mt-12">
-                <Button asChild size="lg" className="bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold px-8 py-4">
-                  <Link href="/idx">View All Properties in {neighborhoodInfo.name}</Link>
-                </Button>
+              <IDXWidget 
+                title=""
+                height={800}
+                showTitle={false}
+                className="bg-white rounded-lg overflow-hidden"
+              />
+              
+              <div className="text-center mt-8">
+                <p className="text-gray-400 text-sm">
+                  Powered by TheMLS.com - Real-time property data
+                </p>
               </div>
             </div>
           </div>
