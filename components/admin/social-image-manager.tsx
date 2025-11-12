@@ -432,7 +432,7 @@ export function SocialImageManager() {
                     
                     <div className="flex items-center justify-between text-xs text-gray-500">
                       <span>Order: {image.order_index}</span>
-                      <span>{new Date(image.created_at).toLocaleDateString()}</span>
+                      <span>{new Date(image.created_at).toLocaleDateString("en-US")}</span>
                     </div>
 
                     <div className="flex space-x-2">

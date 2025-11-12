@@ -408,7 +408,7 @@ export function RealEstateInsightsManager() {
                   <div className="flex items-center space-x-4 mt-2 text-xs text-gray-500">
                     <span>Order: {insight.display_order}</span>
                     {insight.author && <span>By: {insight.author}</span>}
-                    <span>{new Date(insight.created_at).toLocaleDateString()}</span>
+                    <span>{new Date(insight.created_at).toLocaleDateString("en-US")}</span>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">

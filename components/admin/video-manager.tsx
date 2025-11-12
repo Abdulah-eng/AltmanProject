@@ -350,7 +350,7 @@ export function VideoManager() {
                       
                       <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
                         <span>Order: {video.order_index}</span>
-                        <span>{new Date(video.created_at).toLocaleDateString()}</span>
+                        <span>{new Date(video.created_at).toLocaleDateString("en-US")}</span>
                       </div>
 
                       <div className="flex space-x-2">

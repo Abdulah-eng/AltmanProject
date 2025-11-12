@@ -79,7 +79,7 @@ export function BlogPageContent({ blogs }: BlogPageContentProps) {
                      <User className="w-4 h-4 mr-1" />
                      <span className="mr-4">{blog.author}</span>
                      <Calendar className="w-4 h-4 mr-1" />
-                     <span>{new Date(blog.created_at).toLocaleDateString()}</span>
+                     <span>{new Date(blog.created_at).toLocaleDateString("en-US")}</span>
                    </div>
                    
                    <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">{blog.title}</h3>

@@ -34,7 +34,7 @@ export function BlogCard({ blog, variant = "default" }: BlogCardProps) {
              <User className="w-4 h-4 mr-1" />
              <span className="mr-4">{blog.author}</span>
              <Calendar className="w-4 h-4 mr-1" />
-             <span>{new Date(blog.created_at).toLocaleDateString()}</span>
+             <span>{new Date(blog.created_at).toLocaleDateString("en-US")}</span>
            </div>
            
            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{blog.title}</h3>
@@ -64,7 +64,7 @@ export function BlogCard({ blog, variant = "default" }: BlogCardProps) {
           <User className="w-4 h-4 mr-1" />
           <span className="mr-4">{blog.author}</span>
           <Calendar className="w-4 h-4 mr-1" />
-          <span>{new Date(blog.created_at).toLocaleDateString()}</span>
+          <span>{new Date(blog.created_at).toLocaleDateString("en-US")}</span>
         </div>
         
         <h3 className="text-xl font-semibold text-white mb-3 line-clamp-2 group-hover:text-[#D4AF37] transition-colors">

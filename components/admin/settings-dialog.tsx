@@ -193,7 +193,7 @@ export function SettingsDialog({ user }: SettingsDialogProps) {
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-white">Change Password</h3>
               <div className="text-xs text-gray-400">
-                Last changed: {user.updated_at ? new Date(user.updated_at).toLocaleDateString() : 'Unknown'}
+                Last changed: {user.updated_at ? new Date(user.updated_at).toLocaleDateString("en-US") : 'Unknown'}
               </div>
             </div>
             
@@ -347,7 +347,7 @@ export function SettingsDialog({ user }: SettingsDialogProps) {
               <div>
                 <span className="text-gray-400">Account Created:</span>
                 <span className="text-white ml-2">
-                  {user.created_at ? new Date(user.created_at).toLocaleDateString() : 'Unknown'}
+                  {user.created_at ? new Date(user.created_at).toLocaleDateString("en-US") : 'Unknown'}
                 </span>
               </div>
               <div>

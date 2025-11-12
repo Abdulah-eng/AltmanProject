@@ -19,11 +19,6 @@ import { createServerClient } from "@/lib/supabase/server"
 export default async function HomePage() {
   let heroData = null
   let blogs = null
-  let testimonials = null
-  let neighborhoods = null
-  let newDevelopments = null
-  let properties = null
-  let insights = null
 
   try {
     const supabase = await createServerClient()
@@ -39,33 +34,6 @@ export default async function HomePage() {
       .order("created_at", { ascending: false })
       .limit(3)
     blogs = blogsResult.data
-
-    const testimonialsResult = await supabase
-      .from("testimonials")
-      .select("*")
-      .eq("published", true)
-      .order("created_at", { ascending: false })
-    testimonials = testimonialsResult.data
-
-    // Neighborhoods now handled by IDX widget
-    neighborhoods = null
-
-    // New developments now handled by static content
-    newDevelopments = null
-
-    // Properties now handled by IDX widget
-    properties = null
-
-    // Fetch featured insights
-    const insightsResult = await supabase
-      .from("real_estate_insights")
-      .select("*")
-      .eq("featured", true)
-      .eq("published", true)
-      .order("display_order", { ascending: true })
-      .order("created_at", { ascending: false })
-      .limit(3)
-    insights = insightsResult.data
   } catch (error) {
     console.log("Database not configured, using default data")
   }
@@ -75,10 +43,10 @@ export default async function HomePage() {
       <Header />
       <main>
         <HeroSection data={heroData} />
-        <FeaturedProperties properties={properties} />
-        <PremierNeighborhoodsSection neighborhoods={neighborhoods} />
-        <NewDevelopmentsSection developments={newDevelopments} />
-        <RealEstateInsightsSection insights={insights} />
+        <FeaturedProperties />
+        <PremierNeighborhoodsSection />
+        <NewDevelopmentsSection />
+        <RealEstateInsightsSection />
         <WildfireSupport />
         <AboutDonAdamsSection />
         <WhyChooseDonAdamsSection />

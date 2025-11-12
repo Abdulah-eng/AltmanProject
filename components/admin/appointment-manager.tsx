@@ -237,7 +237,7 @@ export function AppointmentManager() {
                     </div>
                   </TableCell>
                   <TableCell>{getStatusBadge(appointment.status)}</TableCell>
-                  <TableCell>{new Date(appointment.created_at).toLocaleDateString()}</TableCell>
+                  <TableCell>{new Date(appointment.created_at).toLocaleDateString("en-US")}</TableCell>
                   <TableCell>
                     <Button variant="outline" size="sm" onClick={() => openAppointmentDialog(appointment)}>
                       <Eye className="w-4 h-4" />

@@ -244,7 +244,7 @@ export function BlogManager() {
                       {blog.published ? "Published" : "Draft"}
                     </span>
                   </TableCell>
-                  <TableCell>{new Date(blog.created_at).toLocaleDateString()}</TableCell>
+                  <TableCell>{new Date(blog.created_at).toLocaleDateString("en-US")}</TableCell>
                   <TableCell>
                     <div className="flex space-x-2">
                       <Button variant="outline" size="sm" onClick={() => openEditDialog(blog)}>

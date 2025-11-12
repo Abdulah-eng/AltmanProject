@@ -340,7 +340,7 @@ export function NeighborhoodManager() {
                    )}
                   
                   <div className="text-sm text-gray-500 mt-2">
-                    Created: {new Date(neighborhood.created_at).toLocaleDateString()}
+                    Created: {new Date(neighborhood.created_at).toLocaleDateString("en-US")}
                   </div>
                 </div>
                 

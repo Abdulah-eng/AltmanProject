@@ -156,7 +156,7 @@ export function ClientRequirementsManager() {
                   </TableCell>
                   <TableCell className="font-medium">{requirement.title}</TableCell>
                   <TableCell>{getStatusBadge(requirement.status)}</TableCell>
-                  <TableCell>{new Date(requirement.created_at).toLocaleDateString()}</TableCell>
+                  <TableCell>{new Date(requirement.created_at).toLocaleDateString("en-US")}</TableCell>
                   <TableCell>
                     <Button variant="outline" size="sm" onClick={() => openRequirementDialog(requirement)}>
                       <Eye className="w-4 h-4" />
