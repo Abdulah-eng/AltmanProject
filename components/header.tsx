@@ -9,13 +9,6 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
-  const aboutDropdownItems = [
-    { label: "JOSH ALTMAN", href: "/about/josh-altman" },
-    { label: "MATTHEW ALTMAN", href: "/about/matthew-altman" },
-    { label: "HEATHER ALTMAN", href: "/about/heather-altman" },
-    { label: "JACOB GREENE", href: "/about/jacob-greene" },
-  ]
-
   const propertiesDropdownItems = [
     { label: "ALL LISTINGS", href: "/listings" },
     { label: "LOS ANGELES LISTINGS", href: "/listings/los-angeles" },
@@ -50,33 +43,12 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6">
-              {/* About Dropdown */}
-              <div
-                className="relative group"
-                onMouseEnter={() => setActiveDropdown("about")}
-                onMouseLeave={() => setActiveDropdown(null)}
+              <Link
+                href="/about"
+                className="text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
               >
-                <Link
-                  href="/about"
-                  className="flex items-center text-white hover:text-[#D4AF37] transition-colors text-sm font-medium tracking-wide"
-                >
-                  ABOUT
-                  <ChevronDown className="w-4 h-4 ml-1" />
-                </Link>
-                {activeDropdown === "about" && (
-                  <div className="absolute top-full left-0 w-64 bg-black border-l-4 border-[#D4AF37] shadow-lg z-50">
-                    {aboutDropdownItems.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="block px-6 py-3 text-white hover:text-[#D4AF37] hover:bg-gray-900 transition-colors text-sm tracking-wide border-b border-gray-800 last:border-b-0"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+                ABOUT
+              </Link>
 
               {/* Properties Dropdown */}
               <div
