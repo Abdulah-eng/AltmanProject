@@ -11,6 +11,8 @@ export function Header() {
 
   const propertiesDropdownItems = [
     { label: "ALL LISTINGS", href: "/listings" },
+    { label: "FEATURED LISTINGS", href: "/featured-listings" },
+    { label: "MARKETS", href: "/markets" },
     { label: "LOS ANGELES LISTINGS", href: "/listings/los-angeles" },
     { label: "DEVELOPMENTS", href: "/listings/developments" },
     { label: "PROPERTY MARKETING", href: "/services/property-marketing" },
